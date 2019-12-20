@@ -1,0 +1,23 @@
+{
+  "Microwave": {
+    "power": 900,
+    "usage": {
+      "value": 7,
+      "unit": "\"min/semaine\""
+    },
+    "histogram": {
+      "title": "\"Coûts à l'année (pour 1min/jour)\"",
+      "y_label": "\"ct/an\"",
+      "x_labels": [
+        "\"Micronde\"",
+        "\"Grill\"",
+        "\"Four\""
+      ],
+      "values": [
+        61,
+        148,
+        176
+      ]
+    }
+  }
+}
