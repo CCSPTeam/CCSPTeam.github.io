@@ -3,20 +3,21 @@
     "power": 900,
     "usage": {
       "value": 7,
-      "unit": "\"min/semaine\""
+      "unit": "min/semaine",
+      "coef": 0.86
     },
     "histogram": {
-      "title": "\"Coûts à l'année (pour 1min/jour)\"",
-      "y_label": "\"ct/an\"",
+      "title": "Puissance Electrique moyenne",
+      "y_label": "Puissance (W)",
       "x_labels": [
-        "\"Micronde\"",
-        "\"Grill\"",
-        "\"Four\""
+        "Micronde",
+        "Grill",
+        "Four"
       ],
       "values": [
-        61,
-        148,
-        176
+        900,
+        1300,
+        2000
       ]
     }
   }
