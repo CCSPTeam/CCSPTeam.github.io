@@ -1,0 +1,397 @@
+{
+  "Microwave": {
+    "power": 900,
+    "usage": {
+      "value": 7,
+      "unit": "min/semaine",
+      "coef": 0.00086
+    },
+    "histogram": {
+      "title": "Puissance Electrique moyenne",
+      "y_label": "Puissance (W)",
+      "x_labels": [
+        "Micronde",
+        "Grill",
+        "Four"
+      ],
+      "values": [
+        900,
+        1300,
+        2000
+      ]
+    }
+  },
+  "Dishwasher": {
+    "power": 1200,
+    "usage": {
+      "value": 7,
+      "unit": "cycle/semaine",
+      "coef": 0.078
+    },
+    "histogram": {
+      "title": "Coûts selon la classe d'énergie",
+      "y_label": "Coût normalisé",
+      "x_labels": [
+        "A",
+        "A+",
+        "A++",
+        "A+++"
+      ],
+      "values": [
+        1,
+        0.88,
+        0.8,
+        0.74
+      ]
+    }
+  },
+  "Coffee": {
+    "power": 1260,
+    "usage": {
+      "value": 14,
+      "unit": "cafés/semaine",
+      "coef": 0.00086
+    },
+    "histogram": {
+      "title": "Coût moyen d'un café (électricité + café)",
+      "y_label": "Coût (ct)",
+      "x_labels": [
+        "Filtre",
+        "Senseo",
+        "Nespresso",
+        "Broyeur"
+      ],
+      "values": [
+        11.1,
+        10.31,
+        13.33,
+        9.21
+      ]
+    }
+  },
+  "hotplate": {
+    "power": 1500,
+    "usage": {
+      "value": 1.5,
+      "unit": "heures/jours",
+      "coef": 0.365
+    },
+    "histogram": {
+      "title": "Prix pour faire bouillir 2L d'eau",
+      "y_label": "Coût (ct)",
+      "x_labels": [
+        "Induction",
+        "Vitrocéramique",
+        "Fonte"
+      ],
+      "values": [
+        2.1,
+        1.4,
+        3.5
+      ]
+    }
+  },
+  "Oven": {
+    "power": 3000,
+    "usage": {
+      "value": 1,
+      "unit": "heures/semaine",
+      "coef": "0.052"
+    },
+    "histogram": {
+      "title": "Coût normalisé selon la classe énergétique",
+      "y_label": "Coûts (normalisés)",
+      "x_labels": [
+        "A+",
+        "A++",
+        "A+++"
+      ],
+      "values": [
+        1,
+        0.74,
+        0.62
+      ]
+    }
+  },
+  "Hood": {
+    "power": 70,
+    "usage": {
+      "value": 1,
+      "unit": "heures/jour",
+      "coeff": 0.365
+    },
+    "histogram": {
+      "title": "Coût normalisé selon la classe énergétique",
+      "y_label": "Coût (normalisé)",
+      "x_labels": [
+        "B",
+        "A",
+        "A+",
+        "A++"
+      ],
+      "values": [
+        1,
+        0.8,
+        0.65,
+        0.24
+      ]
+    }
+  },
+  "Fridge": {
+    "power": 300,
+    "usage": {
+      "value": 40,
+      "unit": "€/an",
+      "coef": "1"
+    },
+    "histogram": {
+      "title": "Coût normalisé selon la classe énergétique",
+      "y_label": "Coût (normalisé)",
+      "x_labels": [
+        "A",
+        "A+",
+        "A++",
+        "A+++"
+      ],
+      "values": [
+        1,
+        0.77,
+        0.56,
+        0.22
+      ]
+    }
+  },
+  "Sucker": {
+    "power": 500,
+    "usage": {
+      "value": 2,
+      "unit": "heure/semaine",
+      "coef": "0.052"
+    },
+    "histogram": {
+      "title": "Coût à l'année pour différentes gamme de prix (2h/semaine)",
+      "y_label": "Coût (€)",
+      "x_labels": [
+        "Entrée Gamme (61€)",
+        "Milieu de gamme(180€)",
+        "Haut de Gamme (560€)",
+        "Robot (200€)"
+      ],
+      "values": [
+        11.16,
+        10.55,
+        10.19,
+        10.02
+      ]
+    }
+  },
+  "Bass": {
+    "power": 75,
+    "usage": {
+      "value": 2,
+      "unit": "heures/semaine",
+      "coef": "0.052"
+    },
+    "histogram": {
+      "title": "Coût à l'année (1h/jour)",
+      "y_label": "Coût (€)",
+      "x_labels": [
+        "Guitare",
+        "Basse",
+        "Batterie",
+        "Piano"
+      ],
+      "values": [
+        1.01,
+        1.52,
+        0.81,
+        0.98
+      ]
+    }
+  },
+  "Light": {
+    "power": 40,
+    "usage": {
+      "value": 2,
+      "unit": "heures/jour",
+      "coef": "0.365"
+    },
+    "histogram": {
+      "title": "Coût à l'année (1h/jour)",
+      "y_label": "Coût (€)",
+      "x_labels": [
+        "Incandescence (40W)",
+        "Halogène (28W)",
+        "Fluocompacte (9W)",
+        "LED (6W)"
+      ],
+      "values": [
+        1.9,
+        1.3,
+        0.4,
+        0.3
+      ]
+    }
+  },
+  "Boiler": {
+    "power": 2400,
+    "usage": {
+      "value": 200,
+      "unit": "Litres",
+      "coef": "0.059"
+    },
+    "histogram": {
+      "title": "Interêts de l'utilisation en heure creuse",
+      "y_label": "Coût (€/an pour 1 personne)",
+      "x_labels": [
+        "0% Heures creuses",
+        "50% Heures creuses",
+        "100% Heures creuses"
+      ],
+      "values": [
+        177.78,
+        156.87,
+        137.6
+      ]
+    }
+  },
+  "Dryer": {
+    "power": 3000,
+    "usage": {
+      "value": 1,
+      "unit": "cycle/semaine",
+      "coef": 0.078
+    },
+    "histogram": {
+      "title": "Coûts selon la classe d'énergie",
+      "y_label": "Coût normalisé",
+      "x_labels": [
+        "A",
+        "A+",
+        "A++",
+        "A+++"
+      ],
+      "values": [
+        1,
+        0.7,
+        0.52,
+        0.22
+      ]
+    }
+  },
+  "Washer": {
+    "power": 3000,
+    "usage": {
+      "value": 1,
+      "unit": "cycle/semaine",
+      "coef": 0.078
+    },
+    "histogram": {
+      "title": "Coûts selon la classe d'énergie",
+      "y_label": "Coût normalisé",
+      "x_labels": [
+        "A",
+        "A+",
+        "A++",
+        "A+++"
+      ],
+      "values": [
+        1,
+        0.87,
+        0.77,
+        0.36
+      ]
+    }
+  },
+  "Laptop": {
+    "power": 100,
+    "usage": {
+      "value": 7,
+      "unit": "charge/semaine",
+      "coef": 0.06
+    },
+    "histogram": {
+      "title": "Coût de la charge à l'année (1 charge/jour)",
+      "y_label": "Coût (€)",
+      "x_labels": [
+        "Macbook",
+        "Surface Pro",
+        "Gamer Laptop",
+        "Classic"
+      ],
+      "values": [
+        2.21,
+        3.57,
+        4.49,
+        3.06
+      ]
+    }
+  },
+  "Printer": {
+    "power": 800,
+    "usage": {
+      "value": 1000,
+      "unit": "pages/an",
+      "coef": 0.005
+    },
+    "histogram": {
+      "title": "Coût à l'utilisation",
+      "y_label": "Coût (€)",
+      "x_labels": [
+        "Veille permanente (1 an)",
+        "Jet d'encre (1000 copies)",
+        "Laser (1000 copies)"
+      ],
+      "values": [
+        7.35,
+        0.61,
+        2.27
+      ]
+    }
+  },
+  "PC": {
+    "power": "600",
+    "usage": {
+      "value": 2,
+      "unit": "heures/jour",
+      "coef": "0.365"
+    },
+    "histogram": {
+      "title": "Consommation électrique",
+      "y_label": "Consommation kWh",
+      "x_labels": [
+        "Veille",
+        "Office",
+        "Gaming",
+        "Neural Net Training"
+      ],
+      "values": [
+        0
+      ]
+    }
+  },
+  "Box": {
+    "power": "15",
+    "usage": {
+      "value": 18.3,
+      "unit": "€/an",
+      "coef": "1"
+    },
+    "histogram": {
+      "title": "Classement par opérateur",
+      "y_label": "Coût (€/an)",
+      "x_labels": [
+        "SFR",
+        "Bouygues",
+        "Orange",
+        "Free"
+      ],
+      "values": [
+        8.58,
+        13.49,
+        12.26,
+        20.84
+      ]
+    }
+  }
+}
