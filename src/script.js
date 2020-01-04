@@ -73,6 +73,9 @@ d3.xml("../SVGs/PoC.svg")
           
         var element = svg2.selectAll(".clickable")
             .on('click', (d, i,e) => {
+
+
+
                 idSelected=e[i].id;
                 // Visibility parameter allow to display or remove information on click
                 div_customContent=d3.select("#div_customContent");
@@ -90,13 +93,16 @@ d3.xml("../SVGs/PoC.svg")
                 title.property('innerHTML',idSelected );
                 powerInput.property('value',powerElec );
                 unit.property('innerHTML',unitElec );
-                 useDD.property('value', nbUseElec);
+                useDD.property('value', nbUseElec);
                   
                 
-                  cost.property('innerHTML',nbUseElec*myObjElec.usage.coef*powerElec );
+                cost.property('innerHTML',nbUseElec*myObjElec.usage.coef*powerElec );
+
+                //Mise à jour de l'histogramme
+                updateHistogram(idSelected);
 
             });
-            
+
         function onChangeCost(){
             if(idSelected!==null){
              myObjElec=data[idSelected];
