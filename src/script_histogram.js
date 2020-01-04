@@ -1,42 +1,48 @@
-// NOM_DE_L_APPAREIL : Dishwasher - Microwave - Coffee - hotplate - Bass
+// deviceName : Dishwasher - Microwave - Coffee - hotplate - Bass
 // A mettre en variable ? par une fonction ?
 
-function updateHistogram(NOM_DE_L_APPAREIL){
-
 // Dimension et marges
-    var margin = {top: 50, right: 10, bottom: 50, left: 70},
-        width = 460 - margin.left - margin.right,
-        height = 400 - margin.top - margin.bottom;
+var margin = {top: 50, right: 10, bottom: 50, left: 70},
+    width = 460 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
 
-// Création du svg
-    var svg = d3.select("#histogram")
+var cpt = 0;
+
+function updateHistogram(deviceName){
+
+    //Gestion dynamique des histogrammes
+    cpt = cpt + 1;
+    if (cpt % 2 == 0){
+        return;
+    }
+    if (cpt > 1) {
+        d3.select("#svg_histogram").remove();
+    }
+
+    // svg
+    var svg_histogram = d3.select("#histogram")
         .append("svg")
+        .attr("id","svg_histogram")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
         .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
 
-// Div pour le tooltip_histogram
+    // Div pour le tooltip_histogram
     var tooltip_histogram = d3.select("body").append("div")
         .attr("class", "tooltip_histogram")
         .style("opacity", 0);
 
-
-    console.log("mdr1")
-
-// Chargement JSON
-
+    // Chargement JSON
     var url = "../Data/data.json";
-
     d3.json(url).then(function(data) {
-        console.log("mdr2");
         // Récupération des données de l'histogramme
-        title = data[NOM_DE_L_APPAREIL]["histogram"].title;
-        title_yAxis = data[NOM_DE_L_APPAREIL]["histogram"]["y_label"];
-        x_values = data[NOM_DE_L_APPAREIL]["histogram"]["values"];
-        x_names = data[NOM_DE_L_APPAREIL]["histogram"]["x_labels"];
-        y_unity = data[NOM_DE_L_APPAREIL]["usage"]["unit"];
+        title = data[deviceName]["histogram"].title;
+        title_yAxis = data[deviceName]["histogram"]["y_label"];
+        x_values = data[deviceName]["histogram"]["values"];
+        x_names = data[deviceName]["histogram"]["x_labels"];
+        y_unity = data[deviceName]["usage"]["unit"];
 
         // Conversion (peut être inutile)
         for (var i = 0; i < x_values.length; i++) {
@@ -47,7 +53,7 @@ function updateHistogram(NOM_DE_L_APPAREIL){
         var x = d3.scaleLinear()
             .domain(x_names)
             .range([0, width]);
-        svg.append("g")
+        svg_histogram.append("g")
             .attr("transform", "translate(0," + height + ")")
             .call(d3.axisBottom(x));
 
@@ -64,7 +70,7 @@ function updateHistogram(NOM_DE_L_APPAREIL){
         }
 
         // Construire l'histogramme
-        svg.selectAll("rect")
+        svg_histogram.selectAll("rect")
             .data(x_values)
             .enter()
             .append("rect")
@@ -100,7 +106,7 @@ function updateHistogram(NOM_DE_L_APPAREIL){
             });
 
         // Ajouter les x_names
-        svg.selectAll("text")
+        svg_histogram.selectAll("text")
             .data(x_names)
             .enter()
             .append("text")
@@ -120,11 +126,11 @@ function updateHistogram(NOM_DE_L_APPAREIL){
         y.domain([0, d3.max(y_labels, function (d) {
             return d;
         })]);
-        svg.append("g")
+        svg_histogram.append("g")
             .call(d3.axisLeft(y));
 
         // Titre de l'axe Y
-        svg.append("text")
+        svg_histogram.append("text")
             .attr("transform", "rotate(-90)")
             .attr("y", 0 - margin.left)
             .attr("x", 0 - (height / 2))
@@ -133,7 +139,7 @@ function updateHistogram(NOM_DE_L_APPAREIL){
             .text(title_yAxis);
 
         // Titre de l'histogramme
-        svg.append("text")
+        svg_histogram.append("text")
             .attr("x", (width / 2))
             .attr("y", 0 - (margin.top / 2))
             .attr("text-anchor", "middle")
@@ -142,5 +148,4 @@ function updateHistogram(NOM_DE_L_APPAREIL){
 
     });
 
-    console.log("mdr3")
 }

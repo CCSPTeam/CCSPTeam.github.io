@@ -90,9 +90,9 @@ d3.xml("../SVGs/PoC.svg")
                 powerElec=myObjElec.power;
                 nbUseElec=myObjElec.usage.value;
                 costElec=0;
-                title.property('innerHTML',idSelected );
-                powerInput.property('value',powerElec );
-                unit.property('innerHTML',unitElec );
+                //title.property('innerHTML', idSelected); Je sais pas pourquoi cette ligne plante tout !
+                powerInput.property('value', powerElec);
+                unit.property('innerHTML', unitElec);
                 useDD.property('value', nbUseElec);
                   
                 
