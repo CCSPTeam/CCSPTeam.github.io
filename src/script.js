@@ -8,7 +8,7 @@
 var parameters = {
     "margin": 30,
     "width-data": 850,
-    "height-data": 850,
+    "height-data": 450,
     "width-rect": 300,
     "height-rect": 425,
     "rect-color": "black",
@@ -23,15 +23,15 @@ var svg2 = d3.select("#svg-container").append("svg")
     .attr("width", parameters["width-data"])
     .attr("height", parameters["height-data"])
     .attr("transform", "translate("+ parameters["margin"]+ ",0)");
-
+let  idSelected;
 // Display tooltip on the right
-var svg3 = d3.select("#svg-container").append("svg")
+/*var svg3 = d3.select("#svg-container").append("svg")
     .attr("width", parameters["width-rect"])
     .attr("height", parameters["height-rect"])
     .attr("transform", "translate("+parameters["margin"]+",0)");
 
 // Draw borders for tooltip
-var rectangle = svg3.append("rect")
+/*var rectangle = svg3.append("rect")
     .attr("x", 0)
     .attr("y", 0)
     .attr("width", parameters["width-rect"])
@@ -41,9 +41,9 @@ var rectangle = svg3.append("rect")
     .style("fill", "none")
     .style("stroke-width", parameters["rect-stroke"]);
 
-// Sample to create information (graph, etc) for objects
+// Sample to create information (graph, etc) for objects*/
 // Can be removed, used for test only
-var rectangle2 = svg3.append("rect")
+/*var rectangle2 = svg3.append("rect")
     .attr("x", 10)
     .attr("y", 45)
     .attr("width", parameters["width-rect"]-20)
@@ -56,67 +56,63 @@ var rectangle2 = svg3.append("rect")
 var objectText = svg3.append("text")
     .attr("x", 150-25)
     .attr("y", 20)
-    .text("")
+    .text("")*/
 
+    let powerInput=d3.select("#power");
+    let useDD=d3.select("#useDD");
+    let unit=d3.select("#unit");
+    let title=d3.select("#title");
+    let cost=d3.select("#cost");    
+   
 // Display the house
 d3.xml("../SVGs/PoC.svg")
-    .then(data => {
-        svg2.node().append(data.documentElement);
+    .then(housesvg => {
+        svg2.node().append(housesvg.documentElement);
 
-        // Add click event to objects
-        // Has to generate information for objects
+       d3.json("../Data/data.json").then( data => {
+          
+        var element = svg2.selectAll(".clickable")
+            .on('click', (d, i,e) => {
+                idSelected=e[i].id;
+                // Visibility parameter allow to display or remove information on click
+                div_customContent=d3.select("#div_customContent");
+                if(div_customContent.style("visibility") == "hidden") {
+                   
+                     div_customContent.style("visibility", "visible");
+                } else {
+                     div_customContent.style("visibility", "hidden");
+                }
+                myObjElec=data[idSelected];
+                unitElec=myObjElec.usage.unit;
+                powerElec=myObjElec.power;
+                nbUseElec=myObjElec.usage.value;
+                costElec=0;
+                title.property('innerHTML',idSelected );
+                powerInput.property('value',powerElec );
+                unit.property('innerHTML',unitElec );
+                 useDD.property('value', nbUseElec);
+                  
+                
+                  cost.property('innerHTML',nbUseElec*myObjElec.usage.coef*powerElec );
 
-        var t = svg2.selectAll("g").select(function() {
-            var s = "" + this.id
+            });
+            
+        function onChangeCost(){
+            if(idSelected!==null){
+             myObjElec=data[idSelected];
+                
+                powerElec=powerInput.property("value");
+                nbUseElec=useDD.property("value");
+                costElec=0;
+                costElec=nbUseElec*myObjElec.usage.coef*powerElec;
 
-            //console.log("HELP")
-            var tmp = svg2.select("g#"+s)
-                .on("click", function () {
-                    //console.log("click " + s)
-                    objectText.text(this.id)
-                    // Visibility parameter allow to display or remove information on click
-                    if(rectangle2.style("visibility") == "hidden") {
-                        objectText.text(this.id)
-                        return rectangle2.style("visibility", "visible");
-                    } else {
-                        objectText.text("")
-                        return rectangle2.style("visibility", "hidden");
-                    }
+                  cost.property('innerHTML',costElec );
+            }
+        }
+         powerInput.on('change',onChangeCost)
+        useDD.on('change',onChangeCost)
+      
+        });
+    })
 
-                });
-        })
-        //
-        // var test = svg2.selectAll("g").selectAll("id")
-        //     .on("click", function() {
-        //         console.log("YAYAYAYAYAYAYAYAY")
-        //     })
-
-        // TODO : Ajouter mouseover tooltip pour indiquer le nom de l'objet
-
-        // var bass = svg2.select("g#Bass")
-        //     .on("click", function () {
-        //
-        //         // Visibility parameter allow to display or remove information on click
-        //         if(rectangle2.style("visibility") == "hidden") {
-        //             objectText.text("Bass")
-        //             return rectangle2.style("visibility", "visible");
-        //         } else {
-        //             objectText.text("")
-        //             return rectangle2.style("visibility", "hidden");
-        //         }
-        //
-        //     });
-        //
-        // var washer = svg2.select("g#Washer")
-        //     .on("click", function(){
-        //         if(rectangle2.style("visibility") == "hidden") {
-        //             objectText.text("Washer")
-        //             return rectangle2.style("visibility", "visible");
-        //         } else {
-        //             objectText.text("")
-        //             return rectangle2.style("visibility", "hidden");
-        //         }
-        //     });
-    });
-
-
+    
