@@ -17,9 +17,9 @@ function updateHistogram(NOM_DE_L_APPAREIL){
         .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
 
-// Div pour le tooltip
-    var tooltip = d3.select("body").append("div")
-        .attr("class", "tooltip")
+// Div pour le tooltip_histogram
+    var tooltip_histogram = d3.select("body").append("div")
+        .attr("class", "tooltip_histogram")
         .style("opacity", 0);
 
 
@@ -83,10 +83,10 @@ function updateHistogram(NOM_DE_L_APPAREIL){
                 d3.select(this).transition()
                     .duration(500)
                     .style("fill", "#1480DA");
-                tooltip.transition()
+                tooltip_histogram.transition()
                     .duration(200)
                     .style("opacity", .9);
-                tooltip.html("" + d + " " + y_unity)
+                tooltip_histogram.html("" + d + " " + y_unity)
                     .style("left", (d3.event.pageX) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
             })
@@ -94,7 +94,7 @@ function updateHistogram(NOM_DE_L_APPAREIL){
                 d3.select(this).transition()
                     .duration(500)
                     .style("fill", "#1996FF");
-                tooltip.transition()
+                tooltip_histogram.transition()
                     .duration(500)
                     .style("opacity", 0);
             });
