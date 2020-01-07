@@ -25,6 +25,7 @@ var svg2 = d3.select("#svg-container").append("svg")
     .attr("transform", "translate(" + parameters["margin"] + ",0)");
 
 let idSelected;
+let previd;
 let powerInput = d3.select("#power");
 let useDD = d3.select("#useDD");
 let unit = d3.select("#unit");
@@ -39,28 +40,32 @@ var tooltip = svg2.append('circle')
     .style("stroke", "black")
 
 // Display the house
-d3.xml("./SVGs/PoC.svg")
+d3.xml("PoC.svg")
     .then(housesvg => {
         svg2.node().append(housesvg.documentElement);
 
-        d3.json("./Data/data.json").then(data => {
+        d3.json("data.json").then(data => {
 
             var element = svg2.selectAll(".clickable")
                 .on('click', (d, i, e) => {
                     idSelected = e[i].id;
+                    if(idSelected.includes("Lamp")){
+                        idSelected="Light"
+                    }
                     // Visibility parameter allow to display or remove information on click
                     div_customContent = d3.select("#div_customContent");
                     if (div_customContent.style("visibility") === "hidden") {
                         div_customContent.style("visibility", "visible");
-                    } else {
+                    } else if(idprev === idSelected) {
                         div_customContent.style("visibility", "hidden");
                     }
+                    idprev=idSelected
                     myObjElec = data[idSelected];
                     unitElec = myObjElec.usage.unit;
                     powerElec = myObjElec.power;
                     nbUseElec = myObjElec.usage.value;
                     costElec = 0;
-                    //title.property('innerHTML', idSelected); Je sais pas pourquoi cette ligne plante tout !
+                    title.property('innerHTML', idSelected);// Je sais pas pourquoi cette ligne plante tout !
                     powerInput.property('value', powerElec);
                     unit.property('innerHTML', unitElec);
                     useDD.property('value', nbUseElec);
@@ -102,3 +107,4 @@ d3.xml("./SVGs/PoC.svg")
     })
 
     
+
