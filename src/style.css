@@ -1,7 +1,30 @@
-.svg-container {
+#svg-container {
     float: left;
 }
 
-.svg-container2 {
-    float: right;
+#svg-container2 {
+    margin-right: 0px;
+    margin-left: 850px;
+}
+#div_customContent{
+ visibility: hidden;
+ border: black 1px solid;
+ padding: 10px;
+
+}
+h4{
+     text-align: center;
+}
+input{
+    width: 50px;
+}
+
+div.tooltip_histogram {
+    position: absolute;
+    width: 120px;
+    height: 14px;
+    padding: 2px;
+    font: 12px sans-serif;
+    border: 0px;
+    pointer-events: none;
 }
