@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <title>Visualization of Electric Consumption of a Household</title>
+</head>
+<body>
+<h1 class="h1">Visualization of Electric Consumption of a Household</h1>
+<div class="display"></div>
+<div id="dady-container"></div>
+<div id="svg-container"></div>
+<div id="svg-container2"></div>
+<div id="div_customContent">
+    <div id="div_information">
+        Power: <input type="text" id="power" name="power" >
+        Use:<select name="useDD" id="useDD">
+        <option value="">--Please choose an option--</option>
+        <option value="dog">Dog</option>
+        <option value="cat">Cat</option>
+        <option value="hamster">Hamster</option>
+        <option value="parrot">Parrot</option>
+        <option value="spider">Spider</option>
+        <option value="goldfish">Goldfish</option>
+    </select>
+        Cost by year :<input type="text" id="cost" name="cost" >
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
