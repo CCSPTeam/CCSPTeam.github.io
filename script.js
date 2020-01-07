@@ -7,8 +7,8 @@
 
 var parameters = {
     "margin": 30,
-    "width-data": 800,
-    "height-data": 800,
+    "width-data": screen.width*0.45,
+    "height-data": screen.height*0.45,
     "width-rect": 300,
     "height-rect": 425,
     "rect-color": "black",
