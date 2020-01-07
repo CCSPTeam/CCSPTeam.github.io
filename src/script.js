@@ -39,11 +39,11 @@ var tooltip = svg2.append('circle')
     .style("stroke", "black")
 
 // Display the house
-d3.xml("../SVGs/PoC.svg")
+d3.xml("./SVGs/PoC.svg")
     .then(housesvg => {
         svg2.node().append(housesvg.documentElement);
 
-        d3.json("../Data/data.json").then(data => {
+        d3.json("./Data/data.json").then(data => {
 
             var element = svg2.selectAll(".clickable")
                 .on('click', (d, i, e) => {
