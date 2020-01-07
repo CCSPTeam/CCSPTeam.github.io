@@ -39,7 +39,7 @@ var tooltip = svg2.append('circle')
     .style("stroke", "black")
 
 // Display the house
-d3.xml("./POCs/PoC.svg")
+d3.xml("./SVGs/PoC.svg")
     .then(housesvg => {
         svg2.node().append(housesvg.documentElement);
 
