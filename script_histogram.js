@@ -12,9 +12,9 @@ function updateHistogram(data, deviceName){
 
     //Gestion dynamique des histogrammes
     cpt = cpt + 1;
-    if (cpt % 2 == 0){
+   /* if (cpt % 2 == 0){
         return;
-    }
+    }*/
     if (cpt > 1) {
         d3.select("#svg_histogram").remove();
     }

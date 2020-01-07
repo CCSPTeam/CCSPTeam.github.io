@@ -7,8 +7,8 @@
 
 var parameters = {
     "margin": 30,
-    "width-data": 1000,
-    "height-data": 1000,
+    "width-data": 800,
+    "height-data": 800,
     "width-rect": 300,
     "height-rect": 425,
     "rect-color": "black",
@@ -21,7 +21,7 @@ var svg = d3.select("#dady-container");
 // Holds the data SVG
 var svg2 = d3.select("#svg-container").append("svg")
     .attr("width", parameters["width-data"])
-    .attr("height", parameters["height-data"])
+   .attr("height", parameters["height-data"])
     .attr("transform", "translate(" + parameters["margin"] + ",0)");
 
 let idSelected;
@@ -29,7 +29,6 @@ let previd;
 let powerInput = d3.select("#power");
 let useDD = d3.select("#useDD");
 let unit = d3.select("#unit");
-let title = d3.select("#title");
 let cost = d3.select("#cost");
 
 var tooltip = svg2.append('circle')
@@ -60,6 +59,8 @@ d3.xml("PoC.svg")
                         div_customContent.style("visibility", "hidden");
                     }
                     idprev=idSelected
+                    
+                    let title = d3.select("#title");
                     myObjElec = data[idSelected];
                     unitElec = myObjElec.usage.unit;
                     powerElec = myObjElec.power;
