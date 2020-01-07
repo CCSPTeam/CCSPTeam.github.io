@@ -7,8 +7,8 @@
 
 var parameters = {
     "margin": 30,
-    "width-data": 850,
-    "height-data": 850,
+    "width-data": 1000,
+    "height-data": 1000,
     "width-rect": 300,
     "height-rect": 425,
     "rect-color": "black",
@@ -22,79 +22,83 @@ var svg = d3.select("#dady-container");
 var svg2 = d3.select("#svg-container").append("svg")
     .attr("width", parameters["width-data"])
     .attr("height", parameters["height-data"])
-    .attr("transform", "translate("+ parameters["margin"]+ ",0)");
+    .attr("transform", "translate(" + parameters["margin"] + ",0)");
 
-// Display tooltip on the right
-var svg3 = d3.select("#svg-container").append("svg")
-    .attr("width", parameters["width-rect"])
-    .attr("height", parameters["height-rect"])
-    .attr("transform", "translate("+parameters["margin"]+",0)");
+let idSelected;
+let powerInput = d3.select("#power");
+let useDD = d3.select("#useDD");
+let unit = d3.select("#unit");
+let title = d3.select("#title");
+let cost = d3.select("#cost");
 
-// Draw borders for tooltip
-var rectangle = svg3.append("rect")
-    .attr("x", 0)
-    .attr("y", 0)
-    .attr("width", parameters["width-rect"])
-    .attr("height", parameters["height-rect"]-25)
-    .attr("transform", "translate(0,25)")
-    .style("stroke", parameters["rect-color"])
-    .style("fill", "none")
-    .style("stroke-width", parameters["rect-stroke"]);
-
-// Sample to create information (graph, etc) for objects
-// Can be removed, used for test only
-var rectangle2 = svg3.append("rect")
-    .attr("x", 10)
-    .attr("y", 45)
-    .attr("width", parameters["width-rect"]-20)
-    .attr("height", parameters["height-rect"]-45)
-    .style("stroke", parameters["rect-color"])
-    .style("fill", "none")
-    .style("stroke-width", parameters["rect-stroke"])
-    .style("visibility", "hidden");
-
-
-// var graph = svg3.append("chart")
-//     .attr("id", "svg3")
-//     .attr("width", parameters["width-rect"] - 20)
-//     .attr("height", parameters["height-rect"]-45)
-//     .append("g")
-//     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-//
-// var histo = function(id){
-//     d3.json('data.json', function (data) {
-//         var x = d3.scaleBand()
-//             .range([0, parameters["width-rect"] - 20])
-//             .padding(0.1);
-//
-//         var y = d3.scaleLinear()
-//             .range([height, 0]);
-//     });
-// }
-
-var objectText = svg3.append("text")
-    .attr("x", 150-25)
-    .attr("y", 20)
-    .text("")
+var tooltip = svg2.append('circle')
+    .attr("cx", 0)
+    .attr("cy", 0)
+    .attr("r", 5)
+    .style("visibility", 'hidden')
+    .style("stroke", "black")
 
 // Display the house
-d3.xml("../SVGs/PoC.svg")
-    .then(data => {
-        svg2.node().append(data.documentElement);
-        var element = svg2.selectAll(".clickable")
-            .on('click', (d, i, e) => {
-                console.log(e[i].id)
-                // Visibility parameter allow to display or remove information on click
-                // myDiv = d3.select("#div_customContent");
-                // console.log(myDiv)
-                if (rectangle2.style("visibility") == "hidden") {
-                    objectText.text(e[i].id)
-                    return rectangle2.style("visibility", "visible");
-                } else {
-                    objectText.text("")
-                    return rectangle2.style("visibility", "hidden");
+d3.xml("./POCs/PoC.svg")
+    .then(housesvg => {
+        svg2.node().append(housesvg.documentElement);
+
+        d3.json("./Data/data.json").then(data => {
+
+            var element = svg2.selectAll(".clickable")
+                .on('click', (d, i, e) => {
+                    idSelected = e[i].id;
+                    // Visibility parameter allow to display or remove information on click
+                    div_customContent = d3.select("#div_customContent");
+                    if (div_customContent.style("visibility") === "hidden") {
+                        div_customContent.style("visibility", "visible");
+                    } else {
+                        div_customContent.style("visibility", "hidden");
+                    }
+                    myObjElec = data[idSelected];
+                    unitElec = myObjElec.usage.unit;
+                    powerElec = myObjElec.power;
+                    nbUseElec = myObjElec.usage.value;
+                    costElec = 0;
+                    //title.property('innerHTML', idSelected); Je sais pas pourquoi cette ligne plante tout !
+                    powerInput.property('value', powerElec);
+                    unit.property('innerHTML', unitElec);
+                    useDD.property('value', nbUseElec);
+                    cost.property('innerHTML', nbUseElec * myObjElec.usage.coef * powerElec);
+
+                    //Mise à jour de l'histogramme
+                    updateHistogram(idSelected);
+
+                })
+                .on("mouseover",function(d){
+                    var mousePosition = d3.mouse(this);
+                    tooltip.style("visibility", 'visible')
+                        .attr("cx", d3.event.pageX-20)
+                        .attr("cy", d3.event.pageY-50)
+                        .raise();
+                })
+                .on('mouseout', function(d){
+
+                    tooltip.style("visibility", 'hidden')
+                });
+
+            function onChangeCost() {
+                if (idSelected !== null) {
+                    myObjElec = data[idSelected];
+
+                    powerElec = powerInput.property("value");
+                    nbUseElec = useDD.property("value");
+                    costElec = 0;
+                    costElec = nbUseElec * myObjElec.usage.coef * powerElec;
+
+                    cost.property('innerHTML', costElec);
                 }
+            }
 
-            });
+            powerInput.on('change', onChangeCost)
+            useDD.on('change', onChangeCost)
 
-    });
+        });
+    })
+
+    
