@@ -67,7 +67,7 @@ d3.xml("./SVGs/PoC.svg")
                     cost.property('innerHTML', nbUseElec * myObjElec.usage.coef * powerElec);
 
                     //Mise à jour de l'histogramme
-                    updateHistogram(idSelected);
+                    updateHistogram(data, idSelected);
 
                 })
                 .on("mouseover",function(d){
