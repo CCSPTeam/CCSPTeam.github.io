@@ -48,12 +48,17 @@ function updateHistogram(data, deviceName){
     }
 
     // Axe X
-    var x = d3.scaleLinear()
-        .domain(x_names)
+    var x = d3.scaleBand().domain(x_names.map(function (el) {
+        console.log(el);
+        return el}))
         .range([0, this.parent.width]);
+
     svg_histogram.append("g")
-        .attr("transform", "translate(0," + this.parent.height + ")")
-        .call(d3.axisBottom(x));
+        .attr("transform", "translate(0," + this.parent.height+ ")")
+        .call(d3.axisBottom(x))
+        .selectAll("text")
+        .style("text-anchor", "end")
+        .attr("transform", "rotate(-45)")
 
     // Trouver le coeficient
     var max = x_values.reduce(function (a, b) {
@@ -104,22 +109,19 @@ function updateHistogram(data, deviceName){
         });
 
     // Ajouter les x_names
-    svg_histogram.selectAll("text")
-        .data(x_names)
-        .enter()
-        .append("text")
-        .text(function (d) {
-            return d;
-        })
-        .attr("x", function (d, i) {
-            return 10 + i * (width / x_values.length);
-        })
-        .attr("y", function (d) {
-            return height + 20;
-        })
-        .selectAll("text")
-        .style("text-anchor", "start")
-        .attr("transform", "rotate(45)");
+ //   svg_histogram.selectAll("text")
+ //       .data(x_names)
+ //       .enter()
+ //       .append("text")
+ //       .text(function (d) {
+ //           return d;
+ //       })
+ //       .attr("x", function (d, i) {
+ //           return 10 + i * (width / x_values.length);
+ //       })
+ //       .attr("y", function (d) {
+ //           return height + 20;
+ //       });
 
     // Axe Y
     var y = d3.scaleLinear()
