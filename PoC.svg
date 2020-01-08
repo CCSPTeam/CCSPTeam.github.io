@@ -198,7 +198,7 @@
 		<rect id="Handle2_1_" x="273" y="466" class="st20" width="10" height="5"/>
 		<rect id="Handle1_1_" x="273" y="491" class="st20" width="10" height="5"/>
 	</g>
-	<g id="Oven">
+	<g id="Oven" class="clickable">
 		<rect id="Bottom_4_" x="303" y="461" class="st12" width="50" height="50"/>
 		<rect id="Frame_2_" x="308" y="466" class="st11" width="40" height="45"/>
 		<rect id="Window_1_" x="313" y="481" class="st20" width="30" height="24"/>

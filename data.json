@@ -4,7 +4,7 @@
     "usage": {
       "value": 7,
       "unit": "min/semaine",
-      "coef": 0.00086
+      "coef": 0.000121
     },
     "histogram": {
       "title": "Puissance Electrique moyenne",
@@ -26,7 +26,7 @@
     "usage": {
       "value": 7,
       "unit": "cycle/semaine",
-      "coef": 0.078
+      "coef": 0.00364
     },
     "histogram": {
       "title": "Coûts selon la classe d'énergie",
@@ -50,7 +50,7 @@
     "usage": {
       "value": 14,
       "unit": "cafés/semaine",
-      "coef": 0.00086
+      "coef": 0.000121
     },
     "histogram": {
       "title": "Coût moyen d'un café (électricité + café)",
@@ -69,12 +69,12 @@
       ]
     }
   },
-  "hotplate": {
+  "Hotplate": {
     "power": 1500,
     "usage": {
-      "value": 1.5,
+      "value": 0.5,
       "unit": "heures/jours",
-      "coef": 0.365
+      "coef": 0.0511
     },
     "histogram": {
       "title": "Prix pour faire bouillir 2L d'eau",
@@ -96,7 +96,7 @@
     "usage": {
       "value": 1,
       "unit": "heures/semaine",
-      "coef": "0.052"
+      "coef": 0.00728
     },
     "histogram": {
       "title": "Coût normalisé selon la classe énergétique",
@@ -118,7 +118,7 @@
     "usage": {
       "value": 1,
       "unit": "heures/jour",
-      "coeff": 0.365
+      "coef": 0.0511
     },
     "histogram": {
       "title": "Coût normalisé selon la classe énergétique",
@@ -140,9 +140,9 @@
   "Fridge": {
     "power": 300,
     "usage": {
-      "value": 40,
-      "unit": "€/an",
-      "coef": "1"
+      "value": 365,
+      "unit": "jours/an",
+      "coef": 0.000264
     },
     "histogram": {
       "title": "Coût normalisé selon la classe énergétique",
@@ -190,7 +190,7 @@
     "usage": {
       "value": 2,
       "unit": "heures/semaine",
-      "coef": "0.052"
+      "coef": "0.00728"
     },
     "histogram": {
       "title": "Coût à l'année (1h/jour)",
@@ -214,7 +214,7 @@
     "usage": {
       "value": 2,
       "unit": "heures/jour",
-      "coef": "0.365"
+      "coef": "0.0511"
     },
     "histogram": {
       "title": "Coût à l'année (1h/jour)",
@@ -233,12 +233,12 @@
       ]
     }
   },
-  "Boiler": {
+  "Watertank": {
     "power": 2400,
     "usage": {
       "value": 200,
       "unit": "Litres",
-      "coef": "0.059"
+      "coef": 0.000833
     },
     "histogram": {
       "title": "Interêts de l'utilisation en heure creuse",
@@ -260,7 +260,7 @@
     "usage": {
       "value": 1,
       "unit": "cycle/semaine",
-      "coef": 0.078
+      "coef": 0.0109
     },
     "histogram": {
       "title": "Coûts selon la classe d'énergie",
@@ -284,7 +284,7 @@
     "usage": {
       "value": 1,
       "unit": "cycle/semaine",
-      "coef": 0.00052
+      "coef": 0.00728
     },
     "histogram": {
       "title": "Coûts selon la classe d'énergie",
@@ -308,7 +308,7 @@
     "usage": {
       "value": 7,
       "unit": "charge/semaine",
-      "coef": 0.06
+      "coef": 0.00728
     },
     "histogram": {
       "title": "Coût de la charge à l'année (1 charge/jour)",
@@ -332,7 +332,7 @@
     "usage": {
       "value": 1000,
       "unit": "pages/an",
-      "coef": 0.005
+      "coef": 0.000006
     },
     "histogram": {
       "title": "Coût à l'utilisation",
@@ -354,7 +354,7 @@
     "usage": {
       "value": 2,
       "unit": "heures/jour",
-      "coef": "0.365"
+      "coef": 0.0511
     },
     "histogram": {
       "title": "Consommation électrique",
@@ -373,9 +373,9 @@
   "Box": {
     "power": "15",
     "usage": {
-      "value": 18.3,
-      "unit": "€/an",
-      "coef": 1
+      "value": 365,
+      "unit": "jours/an",
+      "coef": 0.00336
     },
     "histogram": {
       "title": "Classement par opérateur",
