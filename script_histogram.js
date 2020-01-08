@@ -28,12 +28,7 @@ function updateHistogram(data, deviceName){
         .append("g")
         .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
-
-    // Div pour le tooltip_histogram
-    var tooltip_histogram = d3.select("body").append("div")
-        .attr("class", "tooltip_histogram")
-
-        .style("opacity", 0);
+    
 
     // Chargement JSON
     // Récupération des données de l'histogramme
@@ -92,20 +87,11 @@ function updateHistogram(data, deviceName){
             d3.select(this).transition()
                 .duration(500)
                 .style("fill", "#1480DA");
-            tooltip_histogram.transition()
-                .duration(200)
-                .style("opacity", .9);
-            tooltip_histogram.html(d)
-                .style("left", (d3.event.pageX) + "px")
-                .style("top", (d3.event.pageY - 28) + "px");
         })
         .on("mouseout", function (d) {
             d3.select(this).transition()
                 .duration(500)
                 .style("fill", "#1996FF");
-            tooltip_histogram.transition()
-                .duration(500)
-                .style("opacity", 0);
         });
 
     // Ajouter les x_names
