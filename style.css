@@ -8,6 +8,10 @@
     overflow: hidden;
 }
 
+#div_information{
+    margin-left: 2%;
+}
+
 #svg-container2 {
     margin: 0 auto;
 }

@@ -78,7 +78,7 @@ function updateHistogram(data, deviceName){
         .enter()
         .append("rect")
         .attr("x", function (d, i) {
-            return 10 + i * (width / x_values.length);
+            return 25 + i * (width / x_values.length);
         })
         .attr("y", function (d) {
             return height - (d * coef);
