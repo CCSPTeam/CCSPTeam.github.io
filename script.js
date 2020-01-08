@@ -82,10 +82,10 @@ d3.xml("PoC.svg")
                 })
                 .on("mouseover",function(d,e,i){
                     var mousePosition = d3.mouse(this);
-                    console.log( svg2)
+                   console.log(d3.event)
                     tooltip.style("visibility", 'visible')
                         .attr("cx", d3.event.pageX-60)
-                        .attr("cy", (d3.event.pageY%screen.height-160))
+                        .attr("cy", d3.event.layerY)
                         .raise();
                 })
                 .on('mouseout', function(d){
