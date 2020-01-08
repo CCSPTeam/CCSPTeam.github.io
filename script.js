@@ -80,18 +80,19 @@ d3.xml("PoC.svg")
                     updateHistogram(data, idSelected);
 
                 })
-                .on("mouseover",function(d,e,i){
+              .on("mouseover",function(d,e,i){
                     var mousePosition = d3.mouse(this);
-                   console.log(d3.event)
-                    tooltip.style("visibility", 'visible')
+                    d3.select("#"+i[e].id).selectAll("rect,path,circle ").style("stroke", "rgba(240, 52, 52, 1)").style("stroke-width", "5");
+                    /*tooltip.style("visibility", 'visible')
                         .attr("cx", d3.event.pageX-60)
                         .attr("cy", d3.event.layerY)
-                        .raise();
+                        .raise();*/
                 })
-                .on('mouseout', function(d){
+                .on('mouseout', function(d,e,i){
 
-                    tooltip.style("visibility", 'hidden')
+                   d3.select("#"+i[e].id).selectAll("rect,path,circle").style("stroke", "None");
                 });
+
 
             function onChangeCost() {
                 if (idSelected !== null) {
