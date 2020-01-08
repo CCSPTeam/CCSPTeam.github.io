@@ -17,6 +17,11 @@ var parameters = {
     "rect-stroke": 1
 };
 
+function round_to_precision(x, precision) {
+    var coef_precision = 10 * precision;
+    return Math.round(x * coef_precision) / coef_precision;
+}
+
 // Holds svg children to display them side by side
 var svg = d3.select("#dady-container");
 
@@ -74,7 +79,7 @@ d3.xml("PoC.svg")
                     powerInput.property('value', powerElec);
                     unit.property('innerHTML', unitElec);
                     useDD.property('value', nbUseElec);
-                    cost.property('innerHTML', nbUseElec * myObjElec.usage.coef * powerElec);
+                    cost.property('innerHTML', round_to_precision(nbUseElec * myObjElec.usage.coef * powerElec, 2));
 
                     //Mise à jour de l'histogramme
                     updateHistogram(data, idSelected);
@@ -102,8 +107,7 @@ d3.xml("PoC.svg")
                     nbUseElec = useDD.property("value");
                     costElec = 0;
                     costElec = nbUseElec * myObjElec.usage.coef * powerElec;
-
-                    cost.property('innerHTML', costElec);
+                    cost.property('innerHTML', round_to_precision(costElec, 2));
                 }
             }
 

@@ -284,7 +284,7 @@
     "usage": {
       "value": 1,
       "unit": "cycle/semaine",
-      "coef": 0.078
+      "coef": 0.00052
     },
     "histogram": {
       "title": "Coûts selon la classe d'énergie",
