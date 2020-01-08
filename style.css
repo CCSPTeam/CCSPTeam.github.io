@@ -18,8 +18,9 @@
 #div_customContent{
     margin-bottom: 2%;
     visibility: hidden;
+    position: relative;
     width:30vw;
-    height: 75vh;
+    height: 80vh;
     border: black 1px solid;
 
 
