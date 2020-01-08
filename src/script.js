@@ -7,8 +7,8 @@
 
 var parameters = {
     "margin": 30,
-    "width-data": 1000,
-    "height-data": 1000,
+    "width-data": 600,
+    "height-data": 600,
     "width-rect": 300,
     "height-rect": 425,
     "rect-color": "black",

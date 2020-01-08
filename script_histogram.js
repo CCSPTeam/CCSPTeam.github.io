@@ -2,7 +2,7 @@
 // A mettre en variable ? par une fonction ?
 
 // Dimension et marges
-var margin = {top: 50, right: 10, bottom: 50, left: 70},
+var margin = {top: 20, right: 10, bottom: 50, left: 70},
     width = 460 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
@@ -23,8 +23,8 @@ function updateHistogram(data, deviceName){
     var svg_histogram = d3.select("#histogram")
         .append("svg")
         .attr("id","svg_histogram")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
+        .attr("preserveAspectRatio", "xMinYMin meet")
+        .attr("viewBox", "0 -10 500 700")
         .append("g")
         .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
@@ -32,6 +32,7 @@ function updateHistogram(data, deviceName){
     // Div pour le tooltip_histogram
     var tooltip_histogram = d3.select("body").append("div")
         .attr("class", "tooltip_histogram")
+
         .style("opacity", 0);
 
     // Chargement JSON
@@ -49,9 +50,9 @@ function updateHistogram(data, deviceName){
     // Axe X
     var x = d3.scaleLinear()
         .domain(x_names)
-        .range([0, width]);
+        .range([0, this.parent.width]);
     svg_histogram.append("g")
-        .attr("transform", "translate(0," + height + ")")
+        .attr("transform", "translate(0," + this.parent.height + ")")
         .call(d3.axisBottom(x));
 
     // Trouver le coeficient

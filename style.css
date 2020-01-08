@@ -1,15 +1,23 @@
 #svg-container {
     float: left;
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    vertical-align: top;
+    overflow: hidden;
 }
 
 #svg-container2 {
-    margin-right: 0px;
-    margin-left: 850px;
+    margin: 0 auto;
 }
 #div_customContent{
- visibility: hidden;
- border: black 1px solid;
- padding: 10px;
+    margin-bottom: 2%;
+    visibility: hidden;
+    width:30vw;
+    height: 75vh;
+    border: black 1px solid;
+
 
 }
 h4{
@@ -20,11 +28,14 @@ input{
 }
 
 div.tooltip_histogram {
-    position: absolute;
-    width: 120px;
-    height: 14px;
-    padding: 2px;
+    width: 30vw;
+    height: 100vh;
     font: 12px sans-serif;
-    border: 0px;
     pointer-events: none;
+}
+.svg-content {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
