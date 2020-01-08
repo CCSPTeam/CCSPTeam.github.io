@@ -3,7 +3,7 @@
     display: inline-block;
     position: relative;
     width: 100%;
-    padding-bottom: 100%;
+    padding-bottom: 10%;
     vertical-align: top;
     overflow: hidden;
 }
@@ -21,7 +21,7 @@
     visibility: hidden;
     position: relative;
     width:30vw;
-    height: 500px;
+    height: 600px;
     border: black 1px solid;
 
 
