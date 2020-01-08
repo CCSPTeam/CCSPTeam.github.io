@@ -116,7 +116,10 @@ function updateHistogram(data, deviceName){
         })
         .attr("y", function (d) {
             return height + 20;
-        });
+        })
+        .selectAll("text")
+        .style("text-anchor", "start")
+        .attr("transform", "rotate(45)");
 
     // Axe Y
     var y = d3.scaleLinear()
