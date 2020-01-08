@@ -4,11 +4,13 @@
 //        d3.select('div.display').node().append(data.documentElement)
 //        console.log(data);
 //    })
-console.log(screen.width, screen.height)
+
 var parameters = {
     "margin": 30,
-    "width-data": screen.width*0.4,
-    "height-data": screen.height*0.4,
+    "width-data": 600,
+    "height-data": 600,
+    "width-data": screen.width*0.45,
+    "height-data": screen.height*0.45,
     "width-rect": 300,
     "height-rect": 425,
     "rect-color": "black",
@@ -21,11 +23,10 @@ var svg = d3.select("#dady-container");
 // Holds the data SVG
 var svg2 = d3.select("#svg-container").append("svg")
     .attr("preserveAspectRatio", "xMinYMin meet")
-    .attr("viewBox", "0 0 500 500")
-    .classed("svg-content", true);
-    // .attr("width", parameters["width-data"])
-    // .attr("height", parameters["height-data"])
-    //.attr("transform", "translate(" + parameters["margin"] + ",0)");
+    .attr("viewBox", "0 0 1102 551")
+   // .attr("width", parameters["width-data"])
+   // .attr("height", parameters["height-data"])
+    .attr("transform", "translate(" + parameters["margin"] + ",0)");
 
 let idSelected;
 let previd;
@@ -79,11 +80,12 @@ d3.xml("PoC.svg")
                     updateHistogram(data, idSelected);
 
                 })
-                .on("mouseover",function(d){
+                .on("mouseover",function(d,e,i){
                     var mousePosition = d3.mouse(this);
+                    console.log( svg2)
                     tooltip.style("visibility", 'visible')
-                        .attr("cx", d3.event.pageX)
-                        .attr("cy", d3.event.pageY)
+                        .attr("cx", d3.event.pageX-60)
+                        .attr("cy", (d3.event.pageY%screen.height-160))
                         .raise();
                 })
                 .on('mouseout', function(d){

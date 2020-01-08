@@ -24,7 +24,7 @@ function updateHistogram(data, deviceName){
         .append("svg")
         .attr("id","svg_histogram")
         .attr("preserveAspectRatio", "xMinYMin meet")
-        .attr("viewBox", "0 -10 500 500")
+        .attr("viewBox", "0 -10 500 700")
         .append("g")
         .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");

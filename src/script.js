@@ -20,9 +20,11 @@ var svg = d3.select("#dady-container");
 
 // Holds the data SVG
 var svg2 = d3.select("#svg-container").append("svg")
-    .attr("width", parameters["width-data"])
-    .attr("height", parameters["height-data"])
-    .attr("transform", "translate(" + parameters["margin"] + ",0)");
+    .attr("preserveAspectRatio", "xMinYMin meet")
+    .attr("viewBox", "0 0 100 100");
+    //.attr("width", parameters["width-data"])
+    //.attr("height", parameters["height-data"])
+    //.attr("transform", "translate(" + parameters["margin"] + ",0)");
 
 let idSelected;
 let powerInput = d3.select("#power");
