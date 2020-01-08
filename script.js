@@ -9,7 +9,6 @@ var parameters = {
     "margin": 30,
     "width-data": 600,
     "height-data": 600,
-    "margin": 30*0.45,
     "width-data": screen.width*0.45,
     "height-data": screen.height*0.45,
     "width-rect": 300,
@@ -23,8 +22,10 @@ var svg = d3.select("#dady-container");
 
 // Holds the data SVG
 var svg2 = d3.select("#svg-container").append("svg")
-    .attr("width", parameters["width-data"])
-   .attr("height", parameters["height-data"])
+    .attr("preserveAspectRatio", "xMinYMin meet")
+    .attr("viewBox", "0 0 1102 551")
+   // .attr("width", parameters["width-data"])
+   // .attr("height", parameters["height-data"])
     .attr("transform", "translate(" + parameters["margin"] + ",0)");
 
 let idSelected;
