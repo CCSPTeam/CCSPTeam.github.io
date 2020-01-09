@@ -358,7 +358,7 @@
     },
     "histogram": {
       "title": "Consommation électrique",
-      "y_label": "Consommation kWh",
+      "y_label": "Consommation (W)",
       "x_labels": [
         "Veille",
         "Office",
@@ -366,7 +366,7 @@
         "Neural Net Training"
       ],
       "values": [
-        0
+        30, 100, 450, 500
       ]
     }
   },

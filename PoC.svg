@@ -643,7 +643,7 @@
 	</g>
 </g>
 <g id="Garage">
-	<g id="Watertank" >
+	<g id="Watertank" class="clickable">
 		<path class="st52" d="M882.4,416h-12.8c-3.1,0-5.6-2.5-5.6-5.6v-31.8c0-3.1,2.5-5.6,5.6-5.6h12.8c3.1,0,5.6,2.5,5.6,5.6v31.8
 			C888,413.5,885.5,416,882.4,416z"/>
 		<rect x="886" y="405" class="st52" width="7" height="3"/>
