@@ -6,7 +6,7 @@
 //    })
 
 var parameters = {
-    "margin": 30,
+    "margin": 0,
     "width-data": 600,
     "height-data": 600,
     "width-data": screen.width*0.45,

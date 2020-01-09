@@ -3,8 +3,9 @@
 
 // Dimension et marges
 var margin = {top: 20, right: 10, bottom: 50, left: 70},
-    width = 460 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+    width = 125 ,
+    height = 75 ;
+
 
 var cpt = 0;
 
@@ -12,9 +13,6 @@ function updateHistogram(data, deviceName){
 
     //Gestion dynamique des histogrammes
     cpt = cpt + 1;
-   /* if (cpt % 2 == 0){
-        return;
-    }*/
     if (cpt > 1) {
         d3.select("#svg_histogram").remove();
     }
@@ -23,11 +21,16 @@ function updateHistogram(data, deviceName){
     var svg_histogram = d3.select("#histogram")
         .append("svg")
         .attr("id","svg_histogram")
-        .attr("preserveAspectRatio", "xMinYMin meet")
-        .attr("viewBox", "0 -10 500 700")
+        .attr('preserveAspectRatio', 'xMinYMin meet')
+        .attr(
+            'viewBox',
+            '0 0 ' +
+            (width + margin.left + margin.right) +
+            ' ' +
+            (height + margin.top + margin.bottom)
+        )
         .append("g")
-        .attr("transform",
-            "translate(" + margin.left + "," + margin.top + ")");
+        .attr("transform", "translate(40,30)");
     
 
     // Chargement JSON
@@ -44,12 +47,12 @@ function updateHistogram(data, deviceName){
 
     // Axe X
     var x = d3.scaleBand().domain(x_names.map(function (el) {
-        console.log(el);
         return el}))
-        .range([0, this.parent.width]);
+        .range([0, width]);
 
     svg_histogram.append("g")
-        .attr("transform", "translate(0," + this.parent.height+ ")")
+        .style("font-size", "7px")
+        .attr("transform", "translate(0," + height+ ")")
         .call(d3.axisBottom(x))
         .selectAll("text")
         .style("text-anchor", "end")
@@ -67,22 +70,25 @@ function updateHistogram(data, deviceName){
         y_labels.push(i * (max / 10));
     }
 
+    var color = d3.scaleQuantize().range(["1776b6", "ff7f00", "24a221", "d8241f", "9564bf"]);
+    color.domain([0,4])
+
     // Construire l'histogramme
     svg_histogram.selectAll("rect")
         .data(x_values)
         .enter()
         .append("rect")
         .attr("x", function (d, i) {
-            return 25 + i * (width / x_values.length);
+            return (width / x_values.length)/2 + i * (width / x_values.length) -10;
         })
         .attr("y", function (d) {
             return height - (d * coef);
         })
-        .attr("width", 40)
+        .attr("width", 20)
         .attr("height", function (d) {
             return d * coef;
         })
-        .style("fill", "#1996FF")
+        .style("fill", function(d,i){return color(i)})
         .on("mouseover", function (d) {
             d3.select(this).transition()
                 .duration(500)
@@ -94,21 +100,6 @@ function updateHistogram(data, deviceName){
                 .style("fill", "#1996FF");
         });
 
-    // Ajouter les x_names
- //   svg_histogram.selectAll("text")
- //       .data(x_names)
- //       .enter()
- //       .append("text")
- //       .text(function (d) {
- //           return d;
- //       })
- //       .attr("x", function (d, i) {
- //           return 10 + i * (width / x_values.length);
- //       })
- //       .attr("y", function (d) {
- //           return height + 20;
- //       });
-
     // Axe Y
     var y = d3.scaleLinear()
         .range([height, 0]);
@@ -116,6 +107,7 @@ function updateHistogram(data, deviceName){
         return d;
     })]);
     svg_histogram.append("g")
+        .style("font-size", "7px")
         .call(d3.axisLeft(y));
 
     // Titre de l'axe Y
@@ -123,8 +115,9 @@ function updateHistogram(data, deviceName){
         .attr("transform", "rotate(-90)")
         .attr("y", 0 - margin.left)
         .attr("x", 0 - (height / 2))
-        .attr("dy", "1em")
+        .attr("dy", "40px")
         .style("text-anchor", "middle")
+        .style("font-size", "8px")
         .text(title_yAxis);
 
     // Titre de l'histogramme
@@ -132,6 +125,6 @@ function updateHistogram(data, deviceName){
         .attr("x", (width / 2))
         .attr("y", 0 - (margin.top / 2))
         .attr("text-anchor", "middle")
-        .style("font-size", "20px")
+        .style("font-size", "10px")
         .text(title);
 }
