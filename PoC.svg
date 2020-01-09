@@ -289,7 +289,7 @@
 		<rect id="Input" x="558" y="286" class="st20" width="25" height="10"/>
 		<rect id="Output" x="563" y="306" class="st17" width="15" height="5"/>
 	</g>
-	<g id="Internet_x5F_box" >
+	<g id="Box" class="clickable">
 		<path id="Body_1_" class="st25" d="M423,301h-2.3c-1.1,1.1-1.7,1.7-2.7,2.7V321h5V301z"/>
 		<line id="Line_1_" class="st34" x1="419" y1="305" x2="419" y2="320"/>
 	</g>
