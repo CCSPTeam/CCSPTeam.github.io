@@ -94,10 +94,10 @@ function updateHistogram(data, deviceName){
                 .duration(500)
                 .style("fill", "#1480DA");
         })
-        .on("mouseout", function (d) {
+        .on("mouseout", function (d, i) {
             d3.select(this).transition()
                 .duration(500)
-                .style("fill", "#1996FF");
+                .style("fill", function(d){return color(i)});
         });
 
     // Axe Y
