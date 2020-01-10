@@ -84,7 +84,7 @@
 	<polygon id="Bedroom_x5F_bg" class="st1" points="198,166 548,16 913,176 913,216 183,216 	"/>
 	<rect id="Livingroom_x5F_bg" x="403" y="216" class="st2" width="495" height="150"/>
 	<rect id="Garage_x5F_bg" x="573" y="366" class="st3" width="325" height="145"/>
-	<rect id="Kitchen_x5F_bg" x="198" y="369" class="st4" width="300" height="150"/>
+	<rect id="Kitchen_bg" x="198" y="369" class="st4" width="300" height="150"/>
 	<rect id="Bathroom_x5F_bg" x="198" y="216" class="st5" width="200" height="150"/>
 	<rect id="Hall_x5F_bg" x="498" y="366" class="st6" width="75" height="150"/>
 	<polygon id="House_1_" class="st7" points="198,516 898,516 898,166 548,16 198,166 	"/>

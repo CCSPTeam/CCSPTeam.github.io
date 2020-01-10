@@ -9,8 +9,8 @@ var parameters = {
     "margin": 0,
     "width-data": 600,
     "height-data": 600,
-    "width-data": screen.width*0.45,
-    "height-data": screen.height*0.45,
+    "width-data": screen.width * 0.45,
+    "height-data": screen.height * 0.45,
     "width-rect": 300,
     "height-rect": 425,
     "rect-color": "black",
@@ -29,8 +29,8 @@ var svg = d3.select("#dady-container");
 var svg2 = d3.select("#svg-container").append("svg")
     .attr("preserveAspectRatio", "xMinYMin meet")
     .attr("viewBox", "0 0 1102 551")
-   // .attr("width", parameters["width-data"])
-   // .attr("height", parameters["height-data"])
+    // .attr("width", parameters["width-data"])
+    // .attr("height", parameters["height-data"])
     .attr("transform", "translate(" + parameters["margin"] + ",0)");
 
 let idSelected;
@@ -40,13 +40,23 @@ let useDD = d3.select("#useDD");
 let unit = d3.select("#unit");
 let cost = d3.select("#cost");
 
-var tooltip = svg2.append('circle')
-    .attr("cx", 0)
-    .attr("cy", 0)
-    .attr("r", 5)
-    .style("visibility", 'hidden')
-    .style("stroke", "black")
+var tooltip_shape = {
+    "width": 200,
+    "height": 100,
+}
 
+var tooltip = svg2.append('rect')
+    .attr("x", 0)
+    .attr("y", 0)
+    .attr("rx", 15)
+    .attr("ry", 15)
+    .attr("width", tooltip_shape["width"])
+    .attr("height", tooltip_shape["height"])
+    .style("visibility", 'hidden')
+    .style("fill", "#000000")
+    .style("opacity", 0.5);
+
+var text = svg2.append("text");
 // Display the house
 d3.xml("PoC.svg")
     .then(housesvg => {
@@ -57,18 +67,18 @@ d3.xml("PoC.svg")
             var element = svg2.selectAll(".clickable")
                 .on('click', (d, i, e) => {
                     idSelected = e[i].id;
-                    if(idSelected.includes("Lamp")){
-                        idSelected="Light"
+                    if (idSelected.includes("Lamp")) {
+                        idSelected = "Light"
                     }
                     // Visibility parameter allow to display or remove information on click
                     div_customContent = d3.select("#div_customContent");
                     if (div_customContent.style("visibility") === "hidden") {
                         div_customContent.style("visibility", "visible");
-                    } else if(idprev === idSelected) {
+                    } else if (idprev === idSelected) {
                         div_customContent.style("visibility", "hidden");
                     }
-                    idprev=idSelected
-                    
+                    idprev = idSelected
+
                     let title = d3.select("#title");
                     myObjElec = data[idSelected];
                     unitElec = myObjElec.usage.unit;
@@ -85,17 +95,17 @@ d3.xml("PoC.svg")
                     updateHistogram(data, idSelected);
 
                 })
-              .on("mouseover",function(d,e,i){
+                .on("mouseover", function (d, e, i) {
                     var mousePosition = d3.mouse(this);
-                    d3.select("#"+i[e].id).selectAll("rect,path,circle ").style("stroke", "rgba(240, 52, 52, 1)").style("stroke-width", "5");
+                    d3.select("#" + i[e].id).selectAll("rect,path,circle ").style("stroke", "rgba(240, 52, 52, 1)").style("stroke-width", "5");
                     /*tooltip.style("visibility", 'visible')
                         .attr("cx", d3.event.pageX-60)
                         .attr("cy", d3.event.layerY)
                         .raise();*/
                 })
-                .on('mouseout', function(d,e,i){
+                .on('mouseout', function (d, e, i) {
 
-                   d3.select("#"+i[e].id).selectAll("rect,path,circle").style("stroke", "None");
+                    d3.select("#" + i[e].id).selectAll("rect,path,circle").style("stroke", "None");
                 });
 
 
@@ -114,8 +124,53 @@ d3.xml("PoC.svg")
             powerInput.on('change', onChangeCost)
             useDD.on('change', onChangeCost)
 
+            svg2.selectAll("#Kitchen_bg")
+                .on("mouseover", function(d, i){
+                    tooltip.style("visibility", "visible")
+                        .attr("x", d3.select(this).attr("x")-tooltip_shape["width"])
+                        .attr("y", d3.select(this).attr("y"))
+                        .raise();
+                    text.attr("x", d3.select(this).attr("x")-tooltip_shape["width"]+10)
+                        .attr("y", d3.select(this).attr("y"))
+                        .attr("text-anchor", "start")
+                        .attr("font-size", "20px")
+                        .style("font-color", "#FFFFFF")
+                        .text("Fridge Coffee Microwave Hotplate Oven Hood Light")
+                        .call(wrap, tooltip_shape["width"]-20)
+                        .style("visibility", "visible");
+                })
+                .on("mouseout", function (d, i){
+                    tooltip.style("visibility", "hidden");
+                    text.style("visibility", "hidden");
+                });
+
+                });
+
         });
-    })
 
-    
 
+
+function wrap(text, width) {
+    text.each(function () {
+        let text = d3.select(this),
+            words = text.text().split(/\s+/).reverse(),
+            word,
+            line = [],
+            lineNumber = 0,
+            lineHeight = 1.1, // ems
+            x = text.attr("x"),
+            y = text.attr("y"),
+            dy = 1.1,
+            tspan = text.text(null).append("tspan").attr("x", x).attr("y", y).attr("dy", dy + "em");
+        while (word = words.pop()) {
+            line.push(word);
+            tspan.text(line.join(" "));
+            if (tspan.node().getComputedTextLength() > width) {
+                line.pop();
+                tspan.text(line.join(" "));
+                line = [word];
+                tspan = text.append("tspan").attr("x", x).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
+            }
+        }
+    });
+}

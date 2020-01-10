@@ -2,7 +2,7 @@
 // A mettre en variable ? par une fonction ?
 
 // Dimension et marges
-var margin = {top: 20, right: 10, bottom: 50, left: 70},
+var margin = {top: 20, right: 10, bottom: 75, left: 70},
     width = 125 ,
     height = 75 ;
 
