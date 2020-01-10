@@ -2,9 +2,7 @@
 
 d3.json("data.json").then(data => {
     keys = d3.keys(data)
-    console.log(keys.length)
     for (var j = 0; j < keys.length; j++){
-        console.log(keys[j])
         printHistogram(data, keys[j])
     }
 });
@@ -19,7 +17,7 @@ function printHistogram(data, deviceName){
         .attr('preserveAspectRatio', 'xMinYMin meet')
         .attr(
             'viewBox',
-            '0 0 500 150'
+            '0 0 500 175'
         )
         .append("g")
         .attr("transform", "translate(40,30)");
@@ -87,7 +85,11 @@ function printHistogram(data, deviceName){
                 .text(round_to_precision(d, 1))
                 .attr("id", "tooltipp")
                 .attr("x", function (d) {
-                    return (width / x_values.length)/2 + i * (width / x_values.length) -10;})
+                    x_values = data[deviceName]["histogram"]["values"];
+                    return (width / x_values.length)/2 + i * (width / x_values.length) -10 + textmargin
+
+
+                })
                 .attr("y", function () {
                     return height - (d * coef) - 2;
                 })
