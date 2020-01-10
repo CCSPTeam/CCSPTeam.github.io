@@ -11,6 +11,7 @@ d3.json("data.json").then(data => {
 
 function printHistogram(data, deviceName){
 
+    var textmargin = 250
     // svg
     var svg_histogram = d3.select("#div_list")
         .append("svg")
@@ -18,7 +19,7 @@ function printHistogram(data, deviceName){
         .attr('preserveAspectRatio', 'xMinYMin meet')
         .attr(
             'viewBox',
-            '0 0 500 100'
+            '0 0 500 150'
         )
         .append("g")
         .attr("transform", "translate(40,30)");
@@ -36,7 +37,7 @@ function printHistogram(data, deviceName){
     // Axe X
     var x = d3.scaleBand().domain(x_names.map(function (el) {
         return el}))
-        .range([0, width]);
+        .range([textmargin, width+textmargin]);
 
     svg_histogram.append("g")
         .style("font-size", "7px")
@@ -67,7 +68,7 @@ function printHistogram(data, deviceName){
         .enter()
         .append("rect")
         .attr("x", function (d, i) {
-            return (width / x_values.length)/2 + i * (width / x_values.length) -10;
+            return (width / x_values.length)/2 + i * (width / x_values.length) -10 + textmargin
         })
         .attr("y", function (d) {
             return height - (d * coef);
@@ -102,18 +103,20 @@ function printHistogram(data, deviceName){
 
     // Axe Y
     var y = d3.scaleLinear()
-        .range([height, 0]);
-    y.domain([0, d3.max(y_labels, function (d) {
-        return d;
-    })]);
+        .range([height, 0])
+        .domain([0, d3.max(y_labels, function (d) {
+            return d;
+        })]);
+
     svg_histogram.append("g")
         .style("font-size", "7px")
+        .attr("transform", "translate(" + (textmargin) + ",0)")
         .call(d3.axisLeft(y));
 
     // Titre de l'axe Y
     svg_histogram.append("text")
         .attr("transform", "rotate(-90)")
-        .attr("y", 0 - margin.left)
+        .attr("y", 0 - margin.left + textmargin)
         .attr("x", 0 - (height / 2))
         .attr("dy", "40px")
         .style("text-anchor", "middle")
@@ -122,9 +125,14 @@ function printHistogram(data, deviceName){
 
     // Titre de l'histogramme
     svg_histogram.append("text")
-        .attr("x", (width / 2))
+        .attr("x", (width / 2)+ textmargin)
         .attr("y", 0 - (margin.top / 2))
         .attr("text-anchor", "middle")
         .style("font-size", "10px")
         .text(title);
+
+    svg_histogram.append("text")
+        .text(deviceName)
+        .attr("x", textmargin/4)
+        .attr("y", height/2);
 }
