@@ -1,67 +1,67 @@
-
 <!doctype html>
 
- <html lang="en">
+<html lang="en">
 
-    <head>
-        <meta charset="utf-8">
-        <title>CCSPTeam VECH Visualisation</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta charset="utf-8">
+    <title>CCSPTeam VECH Visualisation</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!--Google Font link-->
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Raleway:400,600,700" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <!--Google Font link-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 
 
-        <link rel="stylesheet" href="assets/css/slick.css">
-        <link rel="stylesheet" href="assets/css/slick-theme.css">
-        <link rel="stylesheet" href="assets/css/animate.css">
-        <link rel="stylesheet" href="assets/css/fonticons.css">
-        <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-        <link rel="stylesheet" href="assets/css/bootstrap.css">
-        <link rel="stylesheet" href="assets/css/magnific-popup.css">
-        <link rel="stylesheet" href="assets/css/bootsnav.css">
-        <link rel="stylesheet" href="style.css">
-        <script src="https://d3js.org/d3.v5.min.js"></script>
-        <script src="script_histogram.js"></script>
+    <link rel="stylesheet" href="assets/css/slick.css">
+    <link rel="stylesheet" href="assets/css/slick-theme.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="assets/css/fonticons.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/bootsnav.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="script_histogram.js"></script>
+    <script src="script_list.js"></script>
 
-        <link rel="stylesheet" href="assets/css/style.css">
-        <link rel="stylesheet" href="assets/css/responsive.css" />
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css"/>
 
-        <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-    </head>
+    <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+</head>
 
-    <body data-spy="scroll" data-target=".navbar-collapse">
-        <!-- Preloader -->
-        <div id="loading">
-            <div id="loading-center">
-                <div id="loading-center-absolute">
-                    <div class="object" id="object_one"></div>
-                    <div class="object" id="object_two"></div>
-                    <div class="object" id="object_three"></div>
-                    <div class="object" id="object_four"></div>
-                </div>
+<body data-spy="scroll" data-target=".navbar-collapse">
+<!-- Preloader -->
+<div id="loading">
+    <div id="loading-center">
+        <div id="loading-center-absolute">
+            <div class="object" id="object_one"></div>
+            <div class="object" id="object_two"></div>
+            <div class="object" id="object_three"></div>
+            <div class="object" id="object_four"></div>
+        </div>
+    </div>
+</div><!--End off Preloader -->
+
+
+<div class="culmn">
+    <!--Home page style-->
+    <nav class="navbar navbar-default navbar-fixed white no-background bootsnav">
+        <div class="container">
+
+            <!-- Start Header Navigation -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                    <i class="fa fa-bars"></i>
+                </button>
+
+                <img src="assets/images/logotop.png" class="logo logo-display m-top-10" alt="">
+                <img src="assets/images/logo.png" class="logo logo-scrolled" alt="">
             </div>
-        </div><!--End off Preloader -->
-
-
-        <div class="culmn">
-            <!--Home page style-->
-            <nav class="navbar navbar-default navbar-fixed white no-background bootsnav">
-                <div class="container">
-
-                    <!-- Start Header Navigation -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
-                            <i class="fa fa-bars"></i>
-                        </button>
-
-                            <img src="assets/images/logotop.png" class="logo logo-display m-top-10" alt="">
-                            <img src="assets/images/logo.png" class="logo logo-scrolled" alt="">
-                    </div>
-                    <!-- End Header Navigation -->
+            <!-- End Header Navigation -->
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="navbar-menu">
@@ -75,141 +75,140 @@
     </nav>
 
 
-            <!--Home Sections-->
-            <section id="hello" class="home bg-mega">
-                <div class="overlay"></div>
-                <div class="container">
-                    <div class="row">
-                        <div class="main_home">
-                            <div class="home_text">
-                                <h1 class="text-white">Visualisation de la consommation électrique des foyers</h1>
-                            </div>
+    <!--Home Sections-->
+    <section id="hello" class="home bg-mega">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="main_home">
+                    <div class="home_text">
+                        <h1 class="text-white">Visualisation de la consommation électrique des foyers</h1>
+                    </div>
+                </div>
+            </div><!--End off row-->
+        </div><!--End off container -->
+    </section> <!--End off Home Sections-->
+
+
+    <!--About Sections-->
+    <section id="about" class="about roomy-100">
+        <div class="container">
+            <div class="row">
+                <div class="main_about">
+                    <div class="col-md-6">
+                        <div class="about_content">
+                            <h2>Qui sommes-nous ?</h2>
+                            <div class="separator_left"></div>
+
+                            <p> Nous sommes une équipe de quatre étudiants en Master 2 d'Intelligence
+                                Artificielle à l'Université Claude Bernard Lyon 1 et nous nous intéressons à
+                                notre impact sur l'environnement. Le projet présenté ici est dirigé par Aurélien
+                                Tabard, enseignant-chercheur dans le laboratoire Liris. La page de son
+                                enseignement pour être retrouvée en suivant ce
+                                <a href="https://lyondataviz.github.io/teaching/lyon1-m2/2019/"> lien</a>.</p>
                         </div>
-                    </div><!--End off row-->
-                </div><!--End off container -->
-            </section> <!--End off Home Sections-->
-
-
-            <!--About Sections-->
-            <section id="about" class="about roomy-100">
-                <div class="container">
-                    <div class="row">
-                        <div class="main_about">
-                            <div class="col-md-6">
-                                <div class="about_content">
-                                    <h2>Qui sommes-nous ?</h2>
-                                    <div class="separator_left"></div>
-
-                                    <p> Nous sommes une équipe de quatre étudiants en Master 2 d'Intelligence
-                                        Artificielle à l'Université Claude Bernard Lyon 1 et nous nous intéressons à
-                                        notre impact sur l'environnement. Le projet présenté ici est dirigé par Aurélien
-                                        Tabard, enseignant-chercheur dans le laboratoire Liris. La page de son
-                                        enseignement pour être retrouvée en suivant ce
-                                        <a href="https://lyondataviz.github.io/teaching/lyon1-m2/2019/"> lien</a>.</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="about_accordion wow fadeIn">
-                                    <div id="faq_main_content" class="faq_main_content">
-                                        <h6><i class="fa fa-angle-right"></i> Contexte </h6>
-                                        <div>
-                                            <div class="content">
-                                                <p> Ce projet s'inscrit dans le cadre de l'unité d'enseignement Data
-                                                    Visualisation où nous avons découvert l'intérêt et l'impact qu'ont
-                                                    les visualisations dans la compréhension de données, </p>
-                                            </div>
-                                        </div> <!-- End off accordion item-1 -->
-
-                                        <h6><i class="fa fa-angle-right"></i> Développement</h6>
-                                        <div>
-                                            <div class="content">
-                                                <p>Les visualisations sont réalisées en D3 Javascript.  </p>
-                                            </div><!-- End off accordion item-2 -->
-                                        </div>
-
-                                        <h6> <i class="fa fa-angle-right"></i> CCSP Team </h6>
-                                        <div>
-                                            <div class="content">
-                                                <p>Claire Pillet - claire.pillet@etu.univ-lyon1.fr,</p>
-                                                <p>Cyril Reymond - cyril.reymond@etu.univ-lyon1.fr,</p>
-                                                <p>Steeven Janny - steeven.janny@etu.univ-lyon1.fr,</p>
-                                                <p>Pierre Cabanis - pierre.cabanis@etu.univ-lyon1.fr,</p>
-                                            </div>
-                                        </div> <!-- End off accordion item-3 -->
-
-                                        <h6><i class="fa fa-angle-right"></i> Sources des données</h6>
-                                        <div>
-                                            <div class="content">
-                                                <p>Toutes les données exploitées dans cette visualisation sont issues
-                                                de diverses sources. La plupart d'entre elles sont collecté à partir de
-                                                source publique (notamment les normes européennes). Certaines valeurs
-                                                sont extraites de mesure effectué directement par les contributeurs
-                                                à l'aide du Wattmètre.</p>
-                                            </div>
-                                        </div> <!-- End off accordion item-4 -->
+                    </div>
+                    <div class="col-md-6">
+                        <div class="about_accordion wow fadeIn">
+                            <div id="faq_main_content" class="faq_main_content">
+                                <h6><i class="fa fa-angle-right"></i> Contexte </h6>
+                                <div>
+                                    <div class="content">
+                                        <p> Ce projet s'inscrit dans le cadre de l'unité d'enseignement Data
+                                            Visualisation où nous avons découvert l'intérêt et l'impact qu'ont
+                                            les visualisations dans la compréhension de données, </p>
                                     </div>
+                                </div> <!-- End off accordion item-1 -->
+
+                                <h6><i class="fa fa-angle-right"></i> Développement</h6>
+                                <div>
+                                    <div class="content">
+                                        <p>Les visualisations sont réalisées en D3 Javascript. </p>
+                                    </div><!-- End off accordion item-2 -->
                                 </div>
-                            </div>
-                        </div>
-                    </div><!--End off row-->
-                </div><!--End off container -->
-                <br />
-                <br />
-                <hr />
 
-                
-            </section> <!--End off About section -->
+                                <h6><i class="fa fa-angle-right"></i> CCSP Team </h6>
+                                <div>
+                                    <div class="content">
+                                        <p>Claire Pillet - claire.pillet@etu.univ-lyon1.fr,</p>
+                                        <p>Cyril Reymond - cyril.reymond@etu.univ-lyon1.fr,</p>
+                                        <p>Steeven Janny - steeven.janny@etu.univ-lyon1.fr,</p>
+                                        <p>Pierre Cabanis - pierre.cabanis@etu.univ-lyon1.fr,</p>
+                                    </div>
+                                </div> <!-- End off accordion item-3 -->
 
-            <section id="visualisation">
-                <div class="container">
-                    <div class="row">
-                        <div class="main_featured m-top-10">
-                            <div class="col-sm-12">
-                                <div class="head_title text-center">
-
-                                    <h2>VISUALISATION</h2>
-                                    <div class="separator_auto"></div>
-                                    <p>Le besoin de protéger notre planète et réduire notre impact sur l’environnement se
-                                        fait de plus en plus urgent, et nécessite notre attention au quotidien. Chaque
-                                        individu peut agir à son niveau et cela commence par le domicile. Dans ce projet,
-                                        nous nous intéressons à la consommation électrique des foyers du français moyen,
-                                        et ce appareil par appareil. Nous souhaitons considérer les appareils du quotidien
-                                        dans le but de fournir des informations précises et quantitatives sur leur impact
-                                        énergétique. L’objectif principal de ce projet est de fournir un outil permettant
-                                        aux familles de savoir quels sont les appareils qui consomment le plus, et donc
-                                        ceux sur lesquels il faut agir en priorité. </p>
-                                </div>
+                                <h6><i class="fa fa-angle-right"></i> Sources des données</h6>
+                                <div>
+                                    <div class="content">
+                                        <p>Toutes les données exploitées dans cette visualisation sont issues
+                                            de diverses sources. La plupart d'entre elles sont collecté à partir de
+                                            source publique (notamment les normes européennes). Certaines valeurs
+                                            sont extraites de mesure effectué directement par les contributeurs
+                                            à l'aide du Wattmètre.</p>
+                                    </div>
+                                </div> <!-- End off accordion item-4 -->
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="main_featured m-top-10">
-                            <div class="col-sm-12">
-                                <div class="display"></div>
-                                <div id="dady-container"></div>
-                                <div id="svg-container"></div>
-                            </div>
+                </div>
+            </div><!--End off row-->
+        </div><!--End off container -->
+        <br/>
+        <br/>
+        <hr/>
+
+
+    </section> <!--End off About section -->
+
+    <section id="visualisation">
+        <div class="container">
+            <div class="row">
+                <div class="main_featured m-top-10">
+                    <div class="col-sm-12">
+                        <div class="head_title text-center">
+
+                            <h2>VISUALISATION</h2>
+                            <div class="separator_auto"></div>
+                            <p>Le besoin de protéger notre planète et réduire notre impact sur l’environnement se
+                                fait de plus en plus urgent, et nécessite notre attention au quotidien. Chaque
+                                individu peut agir à son niveau et cela commence par le domicile. Dans ce projet,
+                                nous nous intéressons à la consommation électrique des foyers du français moyen,
+                                et ce appareil par appareil. Nous souhaitons considérer les appareils du quotidien
+                                dans le but de fournir des informations précises et quantitatives sur leur impact
+                                énergétique. L’objectif principal de ce projet est de fournir un outil permettant
+                                aux familles de savoir quels sont les appareils qui consomment le plus, et donc
+                                ceux sur lesquels il faut agir en priorité. </p>
                         </div>
                     </div>
-
-                    <div class="row" id="div_customContent">
-                        <div class="col-md-6">
-                            <div id="histogram"></div>
-                        </div>
-                        <div class="col-md-6">
-                            <h4 id="title"></h4>
-                            <div id="div_information">
-                                <p> Power: <input type="text" id="power" name="power"> W</p>
-                                <p>Use:<input type="text" name="useDD" id="useDD"> <label id="unit"></label>
-                                </p>
-                                <p>Cost by year : <label id="cost"></label>€/an</p>
-                            </div>
-                        </div>
-                        <script src="script.js"></script>
-                   </div>
                 </div>
             </div>
-            </section>
+            <div class="row">
+                <div class="main_featured m-top-10">
+                    <div class="col-sm-12">
+                        <div class="display"></div>
+                        <div id="dady-container"></div>
+                        <div id="svg-container"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="div_customContent">
+                <div class="col-md-6">
+                    <div id="histogram"></div>
+                </div>
+                <div class="col-md-6">
+                    <h4 id="title"></h4>
+                    <div id="div_information">
+                        <p> Power: <input type="text" id="power" name="power"> W</p>
+                        <p>Use:<input type="text" name="useDD" id="useDD"> <label id="unit"></label>
+                        </p>
+                        <p>Cost by year : <label id="cost"></label>€/an</p>
+                    </div>
+                </div>
+                <script src="script.js"></script>
+            </div>
+        </div>
+    </section>
 
     <section id="Utilisation">
         <div class="container">
@@ -226,10 +225,25 @@
                                 utilisation, le coût est automatiquement recalculé. L'histogramme vous donne
                                 des informations plus génèrale concernant l'objet sélectionné.</p>
                         </div>
-
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section id="Liste">
+        <div class="container">
+            <div class="row">
+                <div class="main_featured m-top-10">
+                    <div class="col-sm-12">
+                        <div class="head_title text-center">
+                            <h2>Liste exhaustive des encadrés</h2>
+                        </div>
+                        <div id="div_list"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- scroll up-->
@@ -238,39 +252,37 @@
     </div><!-- End off scroll up -->
 
 
-            <footer id="footer" class="footer bg-black">
-                <div class="container">
-                    <div class="row">
-                        <div class="main_footer text-center p-top-10 p-bottom-10">
-                            <p style="color:#514F4F" class="wow fadeInRight" data-wow-duration="1s">
-                                Template Made by
-                                <a target="_blank" href="https://bootstrapthemes.co" style="color:#514F4F">Bootstrap Themes</a>
-                                2016. All Rights Reserved
-                            </p>
-                        </div>
-                    </div>
+    <footer id="footer" class="footer bg-black">
+        <div class="container">
+            <div class="row">
+                <div class="main_footer text-center p-top-10 p-bottom-10">
+                    <p style="color:#514F4F" class="wow fadeInRight" data-wow-duration="1s">
+                        Template Made by
+                        <a target="_blank" href="https://bootstrapthemes.co" style="color:#514F4F">Bootstrap Themes</a>
+                        2016. All Rights Reserved
+                    </p>
                 </div>
-            </footer>
-
-
-
-
+            </div>
         </div>
-
-            <!-- JS includes -->
-
-            <script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
-            <script src="assets/js/vendor/bootstrap.min.js"></script>
-
-            <script src="assets/js/jquery.magnific-popup.js"></script>
-            <script src="assets/js/slick.min.js"></script>
-            <script src="assets/js/jquery.collapse.js"></script>
-            <script src="assets/js/bootsnav.js"></script>
+    </footer>
 
 
-            <script src="assets/js/plugins.js"></script>
-            <script src="assets/js/main.js"></script>
+</div>
 
-    </body>
+<!-- JS includes -->
+
+<script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
+<script src="assets/js/vendor/bootstrap.min.js"></script>
+
+<script src="assets/js/jquery.magnific-popup.js"></script>
+<script src="assets/js/slick.min.js"></script>
+<script src="assets/js/jquery.collapse.js"></script>
+<script src="assets/js/bootsnav.js"></script>
+
+
+<script src="assets/js/plugins.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
 
 </html>
