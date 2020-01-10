@@ -89,15 +89,27 @@ function updateHistogram(data, deviceName){
             return d * coef;
         })
         .style("fill", function(d,i){return color(i)})
-        .on("mouseover", function (d) {
+        .on("mouseover", function (d, i) {
             d3.select(this).transition()
-                .duration(500)
-                .style("fill", "#1480DA");
+                .duration(100)
+                .attr('stroke', '#000000')
+                .style("stroke-width", "2px");
+            svg_histogram.append("text")
+                .text(round_to_precision(d, 1))
+                .attr("id", "tooltipp")
+                .attr("x", function (d) {
+                    return (width / x_values.length)/2 + i * (width / x_values.length) -10;})
+                .attr("y", function () {
+                    return height - (d * coef) - 2;
+                })
+                .style("font-size", "7px");
         })
         .on("mouseout", function (d, i) {
             d3.select(this).transition()
-                .duration(500)
-                .style("fill", function(d){return color(i)});
+                .duration(100)
+                .style("stroke-width", "0px");
+            svg_histogram.selectAll("#tooltipp")
+                .style("visibility", "hidden");
         });
 
     // Axe Y
