@@ -11,11 +11,7 @@ var cpt = 0;
 
 function updateHistogram(data, deviceName){
 
-    //Gestion dynamique des histogrammes
-    cpt = cpt + 1;
-    if (cpt > 1) {
-        d3.select("#svg_histogram").remove();
-    }
+    d3.select("#svg_histogram").remove();
 
     // svg
     var svg_histogram = d3.select("#histogram")
