@@ -125,29 +125,110 @@ d3.xml("PoC.svg")
             useDD.on('change', onChangeCost)
 
             svg2.selectAll("#Kitchen_bg")
-                .on("mouseover", function(d, i){
+                .on("mouseover", function (d, i) {
                     tooltip.style("visibility", "visible")
-                        .attr("x", d3.select(this).attr("x")-tooltip_shape["width"])
+                        .attr("x", d3.select(this).attr("x") - tooltip_shape["width"])
                         .attr("y", d3.select(this).attr("y"))
                         .raise();
-                    text.attr("x", d3.select(this).attr("x")-tooltip_shape["width"]+10)
+                    text.attr("x", d3.select(this).attr("x") - tooltip_shape["width"] + 10)
                         .attr("y", d3.select(this).attr("y"))
                         .attr("text-anchor", "start")
-                        .attr("font-size", "20px")
-                        .style("font-color", "#FFFFFF")
-                        .text("Fridge Coffee Microwave Hotplate Oven Hood Light")
-                        .call(wrap, tooltip_shape["width"]-20)
-                        .style("visibility", "visible");
+                        .attr("font-size", "17px")
+                        .style('fill', 'white')
+                        .text("Fridge Coffee Microwave Hotplate Oven Hood Light Dishwasher")
+                        .call(wrap, tooltip_shape["width"] - 20)
+                        .style("visibility", "visible")
+                        .raise();
                 })
-                .on("mouseout", function (d, i){
+                .on("mouseout", function (d, i) {
                     tooltip.style("visibility", "hidden");
                     text.style("visibility", "hidden");
                 });
 
+            svg2.selectAll("#Bedroom_bg")
+                .on("mouseover", function (d, i) {
+                    tooltip.style("visibility", "visible")
+                        .attr("x", 198 - tooltip_shape["width"])
+                        .attr("y", 100)
+                        .raise();
+                    text.attr("x", 198 - tooltip_shape["width"] + 10)
+                        .attr("y", 100)
+                        .attr("text-anchor", "start")
+                        .attr("font-size", "20px")
+                        .style('fill', 'white')
+                        .text("Light")
+                        .call(wrap, tooltip_shape["width"] - 20)
+                        .style("visibility", "visible")
+                        .raise();
+                })
+                .on("mouseout", function (d, i) {
+                    tooltip.style("visibility", "hidden");
+                    text.style("visibility", "hidden");
                 });
 
-        });
+            svg2.selectAll("#Livingroom_bg")
+                .on("mouseover", function (d, i) {
+                    tooltip.style("visibility", "visible")
+                        .attr("x", d3.select(this).attr("x") - tooltip_shape["width"] + 700)
+                        .attr("y", parseInt(d3.select(this).attr("y")) + 15)
+                        .raise();
+                    text.attr("x", d3.select(this).attr("x") - tooltip_shape["width"] + 710)
+                        .attr("y", parseInt(d3.select(this).attr("y")) + 15)
+                        .attr("text-anchor", "start")
+                        .attr("font-size", "20px")
+                        .style('fill', 'white')
+                        .text("Box Computer Laptop Printer Light")
+                        .call(wrap, tooltip_shape["width"] - 20)
+                        .style("visibility", "visible")
+                        .raise();
+                })
+                .on("mouseout", function (d, i) {
+                    tooltip.style("visibility", "hidden");
+                    text.style("visibility", "hidden");
+                });
 
+            svg2.selectAll("#Garage_bg")
+                .on("mouseover", function (d, i) {
+                    tooltip.style("visibility", "visible")
+                        .attr("x", d3.select(this).attr("x") - tooltip_shape["width"] + 530)
+                        .attr("y", parseInt(d3.select(this).attr("y")) + 15)
+                        .raise();
+                    text.attr("x", d3.select(this).attr("x") - tooltip_shape["width"] + 540)
+                        .attr("y", parseInt(d3.select(this).attr("y")) + 15)
+                        .attr("text-anchor", "start")
+                        .attr("font-size", "20px")
+                        .style('fill', 'white')
+                        .text("Watertank Bass Light Washer Dryer")
+                        .call(wrap, tooltip_shape["width"] - 20)
+                        .style("visibility", "visible")
+                        .raise();
+                })
+                .on("mouseout", function (d, i) {
+                    tooltip.style("visibility", "hidden");
+                    text.style("visibility", "hidden");
+                });
+            svg2.selectAll("#Bathroom_bg")
+                .on("mouseover", function (d, i) {
+                    tooltip.style("visibility", "visible")
+                        .attr("x", d3.select(this).attr("x") - tooltip_shape["width"] )
+                        .attr("y", parseInt(d3.select(this).attr("y")) + 15)
+                        .raise();
+                    text.attr("x", d3.select(this).attr("x") - tooltip_shape["width"]+10)
+                        .attr("y", parseInt(d3.select(this).attr("y")) + 15)
+                        .attr("text-anchor", "start")
+                        .attr("font-size", "20px")
+                        .style('fill', 'white')
+                        .text("Light")
+                        .call(wrap, tooltip_shape["width"] - 20)
+                        .style("visibility", "visible")
+                        .raise();
+                })
+                .on("mouseout", function (d, i) {
+                    tooltip.style("visibility", "hidden");
+                    text.style("visibility", "hidden");
+                });
+        });
+    });
 
 
 function wrap(text, width) {
