@@ -28,6 +28,8 @@ var titles = ["Total energy production (Mtoe)",
     "Share of wind and solar in electricity production  (%)",
     "CO2 emissions from fuel combustion (MtCO2)"]
 
+var tool = d3.select('body').append('div')
+    .attr('class', 'hidden tooltip');
 
 const deps = svg4.append("g");
 d3.csv("Data/enerdata.csv").then(function(data){
@@ -70,6 +72,17 @@ d3.csv("Data/enerdata.csv").then(function(data){
                     } else {
                         return "#ccc";
                     }
+                })
+                .on('mousemove', function(d) {
+                    var mousePosition = d3.mouse(this);
+                    if (d.properties.values){
+                        tool.classed('hidden', false)
+                            .attr('style', 'left:' + (event.pageX + 10) +
+                                'px; top:' + (event.pageY + 10) + 'px')
+                            .html(d.properties.name + ": " + 	d.properties.values[index]);}
+                })
+                .on('mouseout', function() {
+                    tool.classed('hidden', true);
                 });
             svg4.append("text")
                 .text(titles[index-1])
