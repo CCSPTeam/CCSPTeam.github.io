@@ -47,14 +47,12 @@ d3.csv("Data/enerdata.csv").then(function(data){
         function draw(index) {
             var max = d3.max(geojson.features, function (d) {
                 if (d.properties.values) {
-                    return d.properties.values[index];
-                } else {
-                    return null;
+                    return parseInt(d.properties.values[index]);
                 }
             });
             var min = d3.min(geojson.features, function (d) {
                 if (d.properties.values) {
-                    return d.properties.values[index];
+                    return parseInt(d.properties.values[index]);
                 } else {
                     return null;
                 }
@@ -68,7 +66,7 @@ d3.csv("Data/enerdata.csv").then(function(data){
                 .attr("d", path)
                 .style("fill", function (d) {
                     if (d.properties.values) {
-                        return color(d.properties.values[index]);
+                        return color(parseInt(d.properties.values[index]));
                     } else {
                         return "#ccc";
                     }
@@ -98,6 +96,7 @@ d3.csv("Data/enerdata.csv").then(function(data){
             var colorScale = d3.scaleQuantize()
                 .domain([ min, max ])
                 .range(d3.schemeReds[5]);
+            console.log(min, max)
 
             var legend = d3.legendColor()
                 .labelFormat(d3.format(".0f"))
