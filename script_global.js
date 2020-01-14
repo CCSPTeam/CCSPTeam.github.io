@@ -13,16 +13,10 @@ const svg4 = d3.select('#div_global').append("svg")
         '0 0 500 350'
     )
 
-//var color = d3.scaleQuantize()
-    //.range(["#edf8e9","#bae4b3","#74c476","#31a354","#006d2c"]);
-var color = d3.scaleOrdinal(d3.schemeReds[5]);
-
-
 var titles = ["Total energy production (Mtoe)",
     "Total energy consumption (Mtoe)",
     "Oil products domestic consumption (Mt)",
     "Natural gas domestic consumption (bcm)",
-    "Coal and lignite domestic consumption (Mt)",
     "Electricity domestic consumption (TWh)",
     "Share of renewables in electricity production (%)",
     "Share of wind and solar in electricity production  (%)",
@@ -30,6 +24,8 @@ var titles = ["Total energy production (Mtoe)",
 
 var tool = d3.select('body').append('div')
     .attr('class', 'hidden tooltip');
+
+var selected = 0;
 
 const deps = svg4.append("g");
 d3.csv("Data/enerdata.csv").then(function(data){
@@ -42,7 +38,18 @@ d3.csv("Data/enerdata.csv").then(function(data){
                 }
             }
         }
-        draw(2)
+
+        var svg_btn = d3.select("#div_global_button").append("svg")
+            .attr("id", "svg3")
+            .attr('preserveAspectRatio', 'xMinYMin meet')
+            .attr(
+                'viewBox',
+                '0 0 400 100'
+            );
+
+
+        draw(1)
+
 
         function draw(index) {
             var max = d3.max(geojson.features, function (d) {
@@ -58,7 +65,14 @@ d3.csv("Data/enerdata.csv").then(function(data){
                 }
             });
 
-            color.domain([min, max])
+            var colorScale = d3.scaleQuantize()
+                .domain([ min, max ])
+                .range(["#2166ac", "#4393c3", "#92c5de", "#d1e5f0", "#fddbc7", "#f4a582", "#d6604d", "#b2182b"]);
+
+
+            console.log(d3.schemeRdBu[9])
+
+            console.log(parseInt(max), min)
             deps.selectAll("path")
                 .data(geojson.features)
                 .enter()
@@ -66,7 +80,7 @@ d3.csv("Data/enerdata.csv").then(function(data){
                 .attr("d", path)
                 .style("fill", function (d) {
                     if (d.properties.values) {
-                        return color(parseInt(d.properties.values[index]));
+                        return colorScale(parseInt(d.properties.values[index]));
                     } else {
                         return "#ccc";
                     }
@@ -93,10 +107,7 @@ d3.csv("Data/enerdata.csv").then(function(data){
                 .attr("class", "legendQuant")
                 .attr("transform", "translate(400, 10)");
 
-            var colorScale = d3.scaleQuantize()
-                .domain([ min, max ])
-                .range(d3.schemeReds[5]);
-            console.log(min, max)
+
 
             var legend = d3.legendColor()
                 .labelFormat(d3.format(".0f"))
@@ -108,6 +119,77 @@ d3.csv("Data/enerdata.csv").then(function(data){
 
             svg4.select(".legendQuant")
                 .call(legend)
+
+            svg_btn.append("g")
+                .selectAll("rect")
+                .data(titles)
+                .enter()
+                .append("rect")
+                .attr("x", function(d,i){
+                    if (i<4){
+                        return i*((400-40)/4 +  10) + 5;
+                    }
+                    else{
+                        return (i-4)*((400-40)/4 +  10) + 5;
+                    }
+                })
+                .attr("y", function (d, i) {
+                    if(i<4){
+                        return 5;
+                    }
+                    else{
+                        return 40;
+                    }
+
+                })
+                .attr("width", (400-40)/4)
+                .attr("height", 25)
+                .attr("fill", function(d,i){
+                    if (i == index-1){
+                        return "#888888";
+                    }
+                    else{
+                        return "#FFFFFF";
+                    }
+                })
+                .attr("stroke", "#000000")
+                .attr("stroke-width", "0.5")
+                .attr("value", function (d,i) {return i})
+                .on("mouseover", function(d, i){
+                    d3.select(this).attr("stroke-width", "2");
+                })
+                .on("mouseout", function(d,i){
+                    d3.select(this).attr("stroke-width", "0.5");
+                })
+                .on("click", function (d, i) {
+                    draw(i+1);
+                });
+
+            svg_btn.append("g")
+                .selectAll("text")
+                .data(titles)
+                .enter()
+                .append("text")
+                .text(function(d){ console.log(d); return d})
+                .attr("x", function(d,i){
+                    if (i<4){
+                        return i*((400-40)/4 +  10) + 50;
+                    }
+                    else{
+                        return (i-4)*((400-40)/4 +  10) + 50;
+                    }
+                } )
+                .attr("y", function (d, i) {
+                    if(i<4){
+                        return 20;
+                    }
+                    else{
+                        return 55;
+                    }
+
+                })
+                .style("font-size",  "4px")
+                .attr("text-anchor", "middle");
         }
     });
 });

@@ -17,6 +17,12 @@
     position: relative;
 }
 
+#div_global_button{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
 #div_information{
     position: relative;
     width: 50%;

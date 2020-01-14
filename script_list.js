@@ -57,8 +57,8 @@ function printHistogram(data, deviceName){
         y_labels.push(i * (max / 10));
     }
 
-    var color = d3.scaleQuantize().range(["1776b6", "ff7f00", "24a221", "d8241f", "9564bf"]);
-    color.domain([0,4])
+    var colorhist = d3.scaleQuantize().range(["1776b6", "ff7f00", "24a221", "d8241f", "9564bf"]);
+    colorhist.domain([0,4])
 
     // Construire l'histogramme
     svg_histogram.selectAll("rect")
@@ -75,7 +75,7 @@ function printHistogram(data, deviceName){
         .attr("height", function (d) {
             return d * coef;
         })
-        .style("fill", function(d,i){return color(i)})
+        .style("fill", function(d,i){return colorhist(i)})
         .on("mouseover", function (d, i) {
             d3.select(this).transition()
                 .duration(100)
