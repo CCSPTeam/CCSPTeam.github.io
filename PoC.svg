@@ -140,7 +140,7 @@
 		<path id="Carpet" class="st13" d="M349.8,356h-38.2c-2,0-3.6,1.6-3.6,3.6v1.4c0,0,0,0,0,0h45c0,0,0,0,0,0v-1.8
 			C353,357.5,351.5,356,349.8,356z"/>
 	</g>
-	<g id="Towerheater">
+	<g id="Towerheater" class="clickable">
 		<path id="Bloc5" class="st11" d="M391.8,266h-4.7c-2.3,0-4.1-1.8-4.1-4.1v-4.7c0-0.7,0.5-1.2,1.2-1.2h7.6c0.7,0,1.2,0.5,1.2,1.2
 			v7.6C393,265.5,392.5,266,391.8,266z"/>
 		<path id="Bloc4" class="st11" d="M391.8,286h-4.7c-2.3,0-4.1-1.8-4.1-4.1v-4.7c0-0.7,0.5-1.2,1.2-1.2h7.6c0.7,0,1.2,0.5,1.2,1.2
@@ -154,7 +154,7 @@
 		<path id="Towel" class="st14" d="M393,256h-10v50c0,0-5,0-5-10s0-45,0-45h15V256"/>
 		<line id="Middlebar" class="st19" x1="388" y1="336" x2="388" y2="256"/>
 	</g>
-	<g id="Hairdryer" >
+	<g id="Hairdryer" class="clickable">
 		<polygon id="Bottom" class="st20" points="300.5,291 293,291 293,296 294.3,296 300.5,296 		"/>
 		<rect id="Middle" x="300.5" y="291" class="st10" width="3.8" height="5"/>
 		<path id="Top" class="st20" d="M304.9,291h-0.3c-0.1,0-0.3,0.1-0.3,0.3v4.5c0,0.1,0.1,0.3,0.3,0.3h0.1c1.3,0,2.4-1.1,2.4-2.4v-0.5
@@ -480,7 +480,7 @@
 		<rect id="Pillow2" x="563" y="161" class="st12" width="50" height="5"/>
 		<path id="Pillow1" class="st18" d="M613,161h-50v-2.5c0-1.4,1.1-2.5,2.5-2.5h44.7c1.5,0,2.8,1.2,2.8,2.8V161z"/>
 	</g>
-	<g id="Phone" >
+	<g id="Phone" class="clickable">
 		<rect id="Frame_12_" x="463" y="158" class="st10" width="12" height="21"/>
 		<rect id="Screen_4_" x="463.5" y="158.7" class="st11" width="11" height="18.3"/>
 		<ellipse id="Button_1_" class="st18" cx="468.8" cy="178" rx="0.8" ry="1"/>
@@ -493,7 +493,7 @@
 		<path id="Cable_3_" class="st27" d="M469.5,178.5c-1,3-0.1,5.8,0.5,6.5c1.1,1.3,3,0.6,4,2c0.7,1,0.2,2.1,0,4c-0.3,2.6,0.5,3.2,1,7
 			c0.9,6.6-0.7,8.4,1,10c1.3,1.2,3.4,1.1,6,1c1.2-0.1,2.6-0.9,5-1c0.4,0,0.8,0,1,0"/>
 	</g>
-	<g id="Alarm" >
+	<g id="Alarm" class="clickable">
 		<g id="Frame_11_">
 			<polygon class="st11" points="533,126 528,126 493,126 493,141 533,141 			"/>
 		</g>
@@ -535,7 +535,7 @@
 		
 			<rect id="Line_3_" x="203" y="176" transform="matrix(-1 -3.183244e-11 3.183244e-11 -1 408.0001 387.0001)" class="st26" width="2" height="35"/>
 	</g>
-	<g id="TV" >
+	<g id="TV" class="clickable">
 		<rect id="Foot" x="403" y="174" class="st6" width="21" height="2"/>
 		<rect id="Middle_4_" x="410" y="172" class="st11" width="7" height="2"/>
 		<rect id="Frame_10_" x="383" y="133" class="st26" width="61" height="39"/>
@@ -625,7 +625,7 @@
 			<path id="Line_9_" class="st60" d="M443,188c0,0-2.7,0-6,0s-6,0-6,0s2.7,0,6,0S443,188,443,188z"/>
 		</g>
 	</g>
-	<g id="Tablet" >
+	<g id="Tablet" class="clickable">
 		<path id="Cable_5_" class="st27" d="M339.5,191.5c-1,1.6-0.1,3.1,0.5,3.5c1.1,0.7,3,0.3,4,1.1c0.7,0.5,0.2,1.1,0,2.2
 			c-0.3,1.4,0.5,1.7,1,3.8c0.9,3.5-0.7,4.6,1,5.4c1.3,0.7,3.4,0.6,6,0.5c1.2,0,2.6-0.5,5-0.5c0.4,0,0.8,0,1,0"/>
 		<rect id="Frame_22_" x="331" y="169" class="st10" width="18" height="23"/>

@@ -393,5 +393,139 @@
         20.84
       ]
     }
+  },
+  "TV": {
+    "power": "120",
+    "usage": {
+      "value": 4,
+      "unit": "hours/day (TV LCD)",
+      "coef": 0.1
+    },
+    "histogram": {
+      "title": "Classification by type of television",
+      "y_label": "Cost (€/year) for 4 hours by day",
+      "x_labels": [
+        "TV LED",
+        "LCD",
+        "Plasma",
+        "Veille"
+      ],
+      "values": [
+        7.56,
+        56.28,
+        33.74,
+        4
+      ]
+    }
+  },
+  "Phone": {
+    "power": "10",
+    "usage": {
+      "value": 1,
+      "unit": "recharge/day",
+      "coef": 0.05
+    },
+    "histogram": {
+      "title": "Classification by use case",
+      "y_label": "Cost (€/year)",
+      "x_labels": [
+        "1 charge per day",
+        "2 charges per day",
+        "charger alone"
+      ],
+      "values": [
+        0.50,
+        1.0,
+        0.05
+      ]
+    }
+  },
+  "Tablet": {
+    "power": "20",
+    "usage": {
+      "value": 1,
+      "unit": "recharge/day",
+      "coef": 0.1
+    },
+    "histogram": {
+      "title": "Classification by use case",
+      "y_label": "Cost (€/year)",
+      "x_labels": [
+        "1 charge per day",
+        "2 charges per day",
+        "charger alone"
+      ],
+      "values": [
+        1.0,
+        2.0,
+        0.06
+      ]
+    }
+  },
+  "Alarm": {
+    "power": "4",
+    "usage": {
+      "value": 2,
+      "unit": "hours/week",
+      "coef": 0.005
+    },
+    "histogram": {
+      "title": "Classification by use case",
+      "y_label": "Cost (€/year)",
+      "x_labels": [
+        "2",
+        "4",
+        "8"
+      ],
+      "values": [
+        0.1,
+        0.2,
+        0.3
+      ]
+    }
+  },
+  "Hairdryer": {
+    "power": "2000",
+    "usage": {
+      "value": 30,
+      "unit": "use(30min)/year",
+      "coef": 0.00008
+    },
+    "histogram": {
+      "title": "Classification by use",
+      "y_label": "Cost (€/year)",
+      "x_labels": [
+        "30",
+        "100",
+        "Every day"
+      ],
+      "values": [
+        4.8,
+        16.0,
+        58.4
+      ]
+    }
+  },
+  "Towerheater": {
+    "power": "1500",
+    "usage": {
+      "value": 30,
+      "unit": "use(30min)/year",
+      "coef": 0.00007
+    },
+    "histogram": {
+      "title": "Classification by use",
+      "y_label": "Cost (€/year)",
+      "x_labels": [
+        "30",
+        "100",
+        "Every day"
+      ],
+      "values": [
+        3.15,
+        10.5,
+        38.3
+      ]
+    }
   }
 }
