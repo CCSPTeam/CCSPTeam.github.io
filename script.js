@@ -207,6 +207,7 @@ d3.xml("PoC.svg")
                     tooltip.style("visibility", "hidden");
                     text.style("visibility", "hidden");
                 });
+
             svg2.selectAll("#Bathroom_bg")
                 .on("mouseover", function (d, i) {
                     tooltip.style("visibility", "visible")
