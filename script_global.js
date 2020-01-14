@@ -61,7 +61,7 @@ d3.csv("Data/enerdata.csv").then(function(data){
         var carte = svg_map.append("g").selectAll("path")
             .data(geojson.features);
 
-        title = svg_map.append("text")
+        var title = svg_map.append("text")
             .attr("x", 250)
             .attr("y", 10)
             .attr("text-anchor", "middle");
