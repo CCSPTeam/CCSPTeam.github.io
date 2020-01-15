@@ -24,14 +24,22 @@ var svg_btn = d3.select("#div_global_button").append("svg")
         '0 0 400 100'
     );
 
-var titles = ["Total energy production (Mtoe)",
-    "Total energy consumption (Mtoe)",
-    "Oil products domestic consumption (Mt)",
-    "Natural gas domestic consumption (bcm)",
-    "Electricity domestic consumption (TWh)",
-    "Share of renewables in electricity production (%)",
-    "Share of wind and solar in electricity production  (%)",
-    "CO2 emissions from fuel combustion (MtCO2)"]
+var titles = ["Total energy production per inhabitant",
+    "Total domestic energy consumption per inhabitant",
+    "Oil products domestic consumption per inhabitant",
+    "Natural gas domestic consumption per inhabitant",
+    "Electricity domestic consumption per inhabitant",
+    "Share of renewables in electricity production",
+    "Share of wind and solar in electricity production",
+    "CO2 emissions from fuel combustion per inhabitant"]
+
+var units = ["(Tons of oil equivalent)",
+            "(Ton of oil equivalent)",
+            "(Tons)",
+            "(1000 cm3)",
+            "(kWh)",
+            "(%)",
+            "(Tons of CO2 equivalent)"]
 
 // Tooltip sur la map
 var tool = d3.select('body').append('div')
@@ -64,6 +72,11 @@ d3.csv("Data/enerdata.csv").then(function(data){
         var title = svg_map.append("text")
             .attr("x", 250)
             .attr("y", 10)
+            .attr("text-anchor", "middle");
+
+        var unit = svg_map.append("text")
+            .attr("x", 250)
+            .attr("y", 25)
             .attr("text-anchor", "middle");
         draw(1)
 
@@ -98,6 +111,7 @@ d3.csv("Data/enerdata.csv").then(function(data){
                 });
 
             title.text(titles[index-1]);
+            unit.text(units[index-1]);
 
             update_legend(colorScale);
 
