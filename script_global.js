@@ -105,7 +105,7 @@ d3.csv("Data/enerdata.csv").then(function(data){
                         tool.classed('hidden', false)
                             .attr('style', 'left:' + (event.pageX + 10) +
                                 'px; top:' + (event.pageY + 10) + 'px')
-                            .html(d.properties.name + ": " + 	d.properties.values[index]);}
+                            .html(d.properties.name + ": " + 	round_to_precision(parseFloat(d.properties.values[index]), 2));}
                 })
                 .on('mouseout', function() {
                     tool.classed('hidden', true);
