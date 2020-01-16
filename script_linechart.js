@@ -1,7 +1,6 @@
-
 var width_chart = 250;
 var height_chart = 150;
-var margin = 30;
+var margin_chart = 30;
 
 const svg_linechart = d3.select('#div_linechart').append("svg")
     .attr("id", "svg234")
@@ -12,34 +11,38 @@ const svg_linechart = d3.select('#div_linechart').append("svg")
     )
 
 var g1 = svg_linechart.append("g")
-    .attr("width", width_chart-2*margin)
+    .attr("width", width_chart - 2 * margin_chart)
     .attr("height", height_chart);
 var g2 = svg_linechart.append("g")
-    .attr("width", width_chart-2*margin)
+    .attr("width", width_chart - 2 * margin_chart)
     .attr("height", height_chart)
-    .attr("transform", "translate(0, "+height_chart+")");
+    .attr("transform", "translate(0, " + height_chart + ")");
 var g3 = svg_linechart.append("g")
-    .attr("width", width_chart-2*margin)
+    .attr("width", width_chart - 2 * margin_chart)
     .attr("height", height_chart)
-    .attr("transform", "translate("+width_chart+", 0)");
+    .attr("transform", "translate(" + width_chart + ", 0)");
 var g4 = svg_linechart.append("g")
-    .attr("width", width_chart-2*margin)
+    .attr("width", width_chart - 2 * margin_chart)
     .attr("height", height_chart)
-    .attr("transform", "translate("+width_chart+","+ height_chart+")");
+    .attr("transform", "translate(" + width_chart + "," + height_chart + ")");
 
 var parseTime = d3.timeParse("%Y");
 
 var x = d3.scaleTime().range([0, width_chart]),
     y = d3.scaleLinear().range([height_chart, 0])
-    z = d3.scaleOrdinal(d3.schemeCategory10);
+z = d3.scaleOrdinal(d3.schemeCategory10);
 
 // D3 Line generator with curveBasis being the interpolator
 var line = d3.line()
     .curve(d3.curveBasis)
-    .x(function(d) { return x(parseTime(d.date)); })
-    .y(function(d) { return y(d.value); });
+    .x(function (d) {
+        return x(parseTime(d.date));
+    })
+    .y(function (d) {
+        return y(d.value);
+    });
 
-d3.csv("Data/CO2_emission.csv").then(function(data) {
+d3.csv("Data/CO2_emission.csv").then(function (data) {
     var cities = data.columns.slice(1).map(function (id) {
         return {
             id: id,
@@ -66,15 +69,16 @@ d3.csv("Data/CO2_emission.csv").then(function(data) {
 
     g1.append("g")
         .attr("class", "axis axis--x")
-        .attr("transform", "translate("+margin+"," + height_chart + ")")
+        .attr("transform", "translate(" + margin_chart + "," + height_chart + ")")
         .call(d3.axisBottom(x))
         .selectAll("text")
         .style("text-anchor", "start")
-        .attr("transform", "rotate(45)");;
+        .attr("transform", "rotate(45)");
+    ;
 
     g1.append("g")
         .attr("class", "axis axis--y")
-        .attr("transform", "translate("+margin+",0)")
+        .attr("transform", "translate(" + margin_chart + ",0)")
         .call(d3.axisLeft(y))
         .append("text")
         .attr("transform", "rotate(-90)")

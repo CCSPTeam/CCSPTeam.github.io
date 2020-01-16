@@ -39,6 +39,7 @@ var units = ["(Tons of oil equivalent)",
             "(1000 cm3)",
             "(kWh)",
             "(%)",
+            "(%)",
             "(Tons of CO2 equivalent)"]
 
 // Tooltip sur la map
