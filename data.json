@@ -361,7 +361,7 @@
       "y_label": "Consumption kWh",
       "x_labels": [
         "Standby",
-        "Office Software Applications",
+        "Office Software",
         "Gaming",
         "Neural Net Training"
       ],
