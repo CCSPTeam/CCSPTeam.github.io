@@ -3,16 +3,16 @@
     "power": 900,
     "usage": {
       "value": 7,
-      "unit": "min/semaine",
+      "unit": "min/week",
       "coef": 0.000121
     },
     "histogram": {
-      "title": "Puissance Electrique moyenne",
-      "y_label": "Puissance (W)",
+      "title": "Average Electric Power",
+      "y_label": "Power (W)",
       "x_labels": [
-        "Micronde",
+        "Microwave",
         "Grill",
-        "Four"
+        "Oven"
       ],
       "values": [
         900,
@@ -25,12 +25,12 @@
     "power": 1200,
     "usage": {
       "value": 7,
-      "unit": "cycle/semaine",
+      "unit": "cycle/week",
       "coef": 0.00364
     },
     "histogram": {
-      "title": "Coûts selon la classe d'énergie",
-      "y_label": "Coût normalisé",
+      "title": "Cost by energy class",
+      "y_label": "Normalized Cost",
       "x_labels": [
         "A",
         "A+",
@@ -49,17 +49,17 @@
     "power": 1260,
     "usage": {
       "value": 14,
-      "unit": "cafés/semaine",
+      "unit": "coffee/week",
       "coef": 0.000121
     },
     "histogram": {
-      "title": "Coût moyen d'un café (électricité + café)",
-      "y_label": "Coût (ct)",
+      "title": "Average Cost of coffee (electricity + coffee)",
+      "y_label": "Cost (cents)",
       "x_labels": [
-        "Filtre",
+        "Filter",
         "Senseo",
         "Nespresso",
-        "Broyeur"
+        "Grinding"
       ],
       "values": [
         11.1,
@@ -73,16 +73,16 @@
     "power": 1500,
     "usage": {
       "value": 0.5,
-      "unit": "heures/jours",
+      "unit": "hours/day",
       "coef": 0.0511
     },
     "histogram": {
-      "title": "Prix pour faire bouillir 2L d'eau",
-      "y_label": "Coût (ct)",
+      "title": "Cost of boiling 2L of water",
+      "y_label": "Cost (cents)",
       "x_labels": [
         "Induction",
-        "Vitrocéramique",
-        "Fonte"
+        "Ceramic",
+        "Cast Iron"
       ],
       "values": [
         2.1,
@@ -95,12 +95,12 @@
     "power": 3000,
     "usage": {
       "value": 1,
-      "unit": "heures/semaine",
+      "unit": "hours/week",
       "coef": 0.00728
     },
     "histogram": {
-      "title": "Coût normalisé selon la classe énergétique",
-      "y_label": "Coûts (normalisés)",
+      "title": "Cost by energy class",
+      "y_label": "Normalized Cost",
       "x_labels": [
         "A+",
         "A++",
@@ -117,12 +117,12 @@
     "power": 70,
     "usage": {
       "value": 1,
-      "unit": "heures/jour",
+      "unit": "hours/week",
       "coef": 0.0511
     },
     "histogram": {
-      "title": "Coût normalisé selon la classe énergétique",
-      "y_label": "Coût (normalisé)",
+      "title": "Cost by energy class",
+      "y_label": "Normalized Cost",
       "x_labels": [
         "B",
         "A",
@@ -141,12 +141,12 @@
     "power": 300,
     "usage": {
       "value": 365,
-      "unit": "jours/an",
+      "unit": "day/year",
       "coef": 0.000264
     },
     "histogram": {
-      "title": "Coût normalisé selon la classe énergétique",
-      "y_label": "Coût (normalisé)",
+      "title": "Cost by energy class",
+      "y_label": "Normalized Cost",
       "x_labels": [
         "A",
         "A+",
@@ -165,16 +165,16 @@
     "power": 500,
     "usage": {
       "value": 2,
-      "unit": "heure/semaine",
+      "unit": "hours/week",
       "coef": "0.052"
     },
     "histogram": {
-      "title": "Coût à l'année pour différentes gamme de prix (2h/semaine)",
-      "y_label": "Coût (€)",
+      "title": "Cost by year depending on production quality (2 hours/week)",
+      "y_label": "Cost (€)",
       "x_labels": [
-        "Entrée Gamme (61€)",
-        "Milieu de gamme(180€)",
-        "Haut de Gamme (560€)",
+        "Lower end (61€)",
+        "Mid-range (180€)",
+        "High-end (560€)",
         "Robot (200€)"
       ],
       "values": [
@@ -189,16 +189,16 @@
     "power": 75,
     "usage": {
       "value": 2,
-      "unit": "heures/semaine",
+      "unit": "hours/week",
       "coef": "0.00728"
     },
     "histogram": {
-      "title": "Coût à l'année (1h/jour)",
-      "y_label": "Coût (€)",
+      "title": "Cost by year (1 hour/week)",
+      "y_label": "Cost (€)",
       "x_labels": [
-        "Guitare",
-        "Basse",
-        "Batterie",
+        "Guitar",
+        "Bass",
+        "Drums",
         "Piano"
       ],
       "values": [
@@ -213,16 +213,16 @@
     "power": 40,
     "usage": {
       "value": 2,
-      "unit": "heures/jour",
+      "unit": "hours/week",
       "coef": "0.0511"
     },
     "histogram": {
-      "title": "Coût à l'année (1h/jour)",
-      "y_label": "Coût (€)",
+      "title": "Cost by year (1 hour/day)",
+      "y_label": "Cost (€)",
       "x_labels": [
         "Incandescence (40W)",
-        "Halogène (28W)",
-        "Fluocompacte (9W)",
+        "Halogen (28W)",
+        "Compact Fluorescent Light (9W)",
         "LED (6W)"
       ],
       "values": [
@@ -241,12 +241,12 @@
       "coef": 0.000833
     },
     "histogram": {
-      "title": "Interêts de l'utilisation en heure creuse",
-      "y_label": "Coût (€/an pour 1 personne)",
+      "title": "Interest of uses during off-peak hours",
+      "y_label": "Cost (€/year for one person",
       "x_labels": [
-        "0% Heures creuses",
-        "50% Heures creuses",
-        "100% Heures creuses"
+        "0% off-peak",
+        "50% off-peak",
+        "100% off-peak"
       ],
       "values": [
         177.78,
@@ -259,12 +259,12 @@
     "power": 3000,
     "usage": {
       "value": 1,
-      "unit": "cycle/semaine",
+      "unit": "cycle/week",
       "coef": 0.0109
     },
     "histogram": {
-      "title": "Coûts selon la classe d'énergie",
-      "y_label": "Coût normalisé",
+      "title": "Cost by energy class",
+      "y_label": "Normalized Cost",
       "x_labels": [
         "A",
         "A+",
@@ -283,12 +283,12 @@
     "power": 3000,
     "usage": {
       "value": 1,
-      "unit": "cycle/semaine",
+      "unit": "cycle/week",
       "coef": 0.00728
     },
     "histogram": {
-      "title": "Coûts selon la classe d'énergie",
-      "y_label": "Coût normalisé",
+      "title": "Cost by energy class",
+      "y_label": "Normalized Cost",
       "x_labels": [
         "A",
         "A+",
@@ -307,12 +307,12 @@
     "power": 100,
     "usage": {
       "value": 7,
-      "unit": "charge/semaine",
+      "unit": "charge/week",
       "coef": 0.00728
     },
     "histogram": {
-      "title": "Coût de la charge à l'année (1 charge/jour)",
-      "y_label": "Coût (€)",
+      "title": "Cost of charge by year (1 charge/day)",
+      "y_label": "Cost (€)",
       "x_labels": [
         "Macbook",
         "Surface Pro",
@@ -331,15 +331,15 @@
     "power": 800,
     "usage": {
       "value": 1000,
-      "unit": "pages/an",
+      "unit": "pages/year",
       "coef": 0.000006
     },
     "histogram": {
-      "title": "Coût à l'utilisation",
-      "y_label": "Coût (€)",
+      "title": "Cost to use",
+      "y_label": "Cost (€)",
       "x_labels": [
-        "Veille permanente (1 an)",
-        "Jet d'encre (1000 copies)",
+        "Permanent standby (1 year)",
+        "Ink jet (1000 copies)",
         "Laser (1000 copies)"
       ],
       "values": [
@@ -353,15 +353,15 @@
     "power": "600",
     "usage": {
       "value": 2,
-      "unit": "heures/jour",
+      "unit": "hours/day",
       "coef": 0.0511
     },
     "histogram": {
-      "title": "Consommation électrique",
-      "y_label": "Consommation (W)",
+      "title": "Electricity consumption",
+      "y_label": "Consumption kWh",
       "x_labels": [
-        "Veille",
-        "Office",
+        "Standby",
+        "Office Software Applications",
         "Gaming",
         "Neural Net Training"
       ],
@@ -374,12 +374,12 @@
     "power": "15",
     "usage": {
       "value": 365,
-      "unit": "jours/an",
+      "unit": "day/year",
       "coef": 0.00336
     },
     "histogram": {
-      "title": "Classement par opérateur",
-      "y_label": "Coût (€/an)",
+      "title": "Ranking by internet service provider",
+      "y_label": "Cost (€/year)",
       "x_labels": [
         "SFR",
         "Bouygues",
