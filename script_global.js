@@ -72,7 +72,7 @@ d3.csv("Data/enerdata.csv").then(function(data){
 
         var title = svg_map.append("text")
             .attr("x", 250)
-            .attr("y", 10)
+            .attr("y", 11)
             .attr("text-anchor", "middle");
 
         var unit = svg_map.append("text")
