@@ -1,6 +1,6 @@
 var width_chart = 250;
 var height_chart = 150;
-var margin_chart = 30;
+var margin_chart = 40;
 
 const svg_linechart = d3.select('#div_linechart').append("svg")
     .attr("id", "svg234")
@@ -28,9 +28,9 @@ var g4 = svg_linechart.append("g")
 
 var parseTime = d3.timeParse("%Y");
 
-var x = d3.scaleTime().range([0, width_chart]),
+var x = d3.scaleTime().range([margin_chart, width_chart+margin_chart]),
     y = d3.scaleLinear().range([height_chart, 0])
-z = d3.scaleOrdinal(d3.schemeCategory10);
+    z = d3.scaleOrdinal(d3.schemeCategory10);
 
 // D3 Line generator with curveBasis being the interpolator
 var line = d3.line()
@@ -69,23 +69,25 @@ d3.csv("Data/CO2_emission.csv").then(function (data) {
 
     g1.append("g")
         .attr("class", "axis axis--x")
-        .attr("transform", "translate(" + margin_chart + "," + height_chart + ")")
+        .attr("transform", "translate(0," + height_chart + ")")
         .call(d3.axisBottom(x))
         .selectAll("text")
         .style("text-anchor", "start")
-        .attr("transform", "rotate(45)");
+        .attr("transform", "rotate(45)")
+        .style("font-size", "8px");
     ;
 
     g1.append("g")
         .attr("class", "axis axis--y")
         .attr("transform", "translate(" + margin_chart + ",0)")
         .call(d3.axisLeft(y))
+        .style('font-size', '8px')
         .append("text")
         .attr("transform", "rotate(-90)")
         .attr("y", 6)
         .attr("dy", "0.71em")
         .attr("fill", "#000")
-        .text("Temperature, ºF");
+        .text("MTons of CO2 equivalent");
 
     var city = g1.selectAll(".city")
         .data(cities)
@@ -101,6 +103,13 @@ d3.csv("Data/CO2_emission.csv").then(function (data) {
         })
         .style("stroke", function (d) {
             return z(d.id);
+        })
+        .style("stroke-width", function (d) {
+            if (d.id=="World"){
+                return "2px";
+            }
+            else{
+                return '1px';
+            }
         });
-
 });
