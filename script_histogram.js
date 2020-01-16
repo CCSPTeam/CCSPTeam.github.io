@@ -6,9 +6,6 @@ var margin = {top: 20, right: 10, bottom: 75, left: 70},
     width = 125 ,
     height = 75 ;
 
-
-var cpt = 0;
-
 function updateHistogram(data, deviceName){
 
     d3.select("#svg_histogram").remove();
