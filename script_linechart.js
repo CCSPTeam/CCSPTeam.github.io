@@ -46,18 +46,18 @@ var line = d3.line()
         return y(d.value);
     });
 
-d3.csv("Data/CO2_emission.csv").then(function (data) {
+d3.csv("CO2_emission.csv").then(function (data) {
     lineChartcreate(data,g2,"CO2 Emission")
 });
 
 
-d3.csv("Data/Electricity_production.csv").then(function (data) {
+d3.csv("Electricity_production.csv").then(function (data) {
         lineChartcreate(data,g1,"Electricity Production")
     });
-d3.csv("Data/electricity_domestic_consumption.csv").then(function (data) {
+d3.csv("electricity_domestic_consumption.csv").then(function (data) {
         lineChartcreate(data,g3, "Electricity Consumption")
     });
-d3.csv("Data/share_renewable.csv").then(function (data) {
+d3.csv("share_renewable.csv").then(function (data) {
         lineChartcreate(data,g4, "Share of Renewable")
     });
     
@@ -134,14 +134,14 @@ function lineChartcreate(data,g,name){
                  
     
         
-        var legend = g.selectAll('g')
+        var legend = g
       .data(cities)
       .enter()
       .append('g')
       .attr('class', 'legend');
       console.log(legend)
     legend.append('rect')
-      .attr('x', width_chart - 20)
+      .attr('x', width_chart - 80)
       .attr('y', function(d, i) {
         return i * 20;
       })
@@ -196,7 +196,7 @@ var mouseG = g.append("g")
       .attr('fill', 'none')   
       .attr('pointer-events', 'all')
       .on('mouseout', function() { // on mouse out hide line, circles and text
-        d3.select(".mouse-line")
+        d3.selectAll(".mouse-line")
           .style("opacity", "0");
         d3.selectAll(".mouse-per-line circle")
           .style("opacity", "0");
@@ -204,7 +204,7 @@ var mouseG = g.append("g")
           .style("opacity", "0");
       })
       .on('mouseover', function() { // on mouse in show line, circles and text
-        d3.select(".mouse-line")
+        d3.selectAll(".mouse-line")
           .style("opacity", "1");
         d3.selectAll(".mouse-per-line circle")
           .style("opacity", "1");
@@ -213,7 +213,7 @@ var mouseG = g.append("g")
       })
       .on('mousemove', function() { // mouse moving over canvas
         var mouse = d3.mouse(this);
-        d3.select(".mouse-line")
+        d3.selectAll(".mouse-line")
           .attr("d", function() {
             var d = "M" + mouse[0] + "," + height_chart;
             d += " " + mouse[0] + "," + 0;
@@ -236,12 +236,12 @@ var mouseG = g.append("g")
               target = Math.floor((beginning + end) / 2);
               
               pos = lines[i].getPointAtLength(target);
-           
-              if ((target === end || target === beginning) && pos.x !== mouse[0]) {
+              
+              if ((target === end || target === beginning) && pos.x-margin_chart !== mouse[0]) {
                   break;
               }
-              if (pos.x > mouse[0])      end = target;
-              else if (pos.x < mouse[0]) beginning = target;
+              if (pos.x-margin_chart > mouse[0])      end = target;
+              else if (pos.x-margin_chart < mouse[0]) beginning = target;
               else break; //position found
             }
             
@@ -251,4 +251,6 @@ var mouseG = g.append("g")
             return "translate(" + mouse[0] + "," + pos.y +")";
           });
       });
+      
+     
 }
