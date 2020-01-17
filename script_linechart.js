@@ -46,18 +46,18 @@ var line = d3.line()
         return y(d.value);
     });
 
-d3.csv("CO2_emission.csv").then(function (data) {
+d3.csv("Data/CO2_emission.csv").then(function (data) {
     lineChartcreate(data,g2,"CO2 Emission")
 });
 
 
-d3.csv("Electricity_production.csv").then(function (data) {
+d3.csv("Data/Electricity_production.csv").then(function (data) {
         lineChartcreate(data,g1,"Electricity Production")
     });
-d3.csv("electricity_domestic_consumption.csv").then(function (data) {
+d3.csv("Data/electricity_domestic_consumption.csv").then(function (data) {
         lineChartcreate(data,g3, "Electricity Consumption")
     });
-d3.csv("share_renewable.csv").then(function (data) {
+d3.csv("Data/share_renewable.csv").then(function (data) {
         lineChartcreate(data,g4, "Share of Renewable")
     });
     
