@@ -1,6 +1,6 @@
-var width_chart = 250;
+var width_chart = 190;
 var height_chart = 150;
-var margin_chart = 40;
+var margin_chart = 80;
 
 const svg_linechart = d3.select('#div_linechart').append("svg")
     .attr("id", "svg234")
@@ -13,22 +13,22 @@ const svg_linechart = d3.select('#div_linechart').append("svg")
 var g1 = svg_linechart.append("svg").append("g")
  .attr("id", function(d, i) { return"g1" })
     .attr("width", width_chart - 2 * margin_chart)
-    .attr("height", parseInt(height_chart- margin_chart) );
+    .attr("height", parseInt(height_chart- 40) );
 var g2 =  svg_linechart.append("svg").append("g")
 .attr("id", function(d, i) { return"g2" })
     .attr("width", width_chart - 2 * margin_chart)
-    .attr("height", parseInt(height_chart- margin_chart) )
-    .attr("transform", "translate(0, " +parseInt( height_chart + margin_chart)+ ")");
+    .attr("height", parseInt(height_chart- 40) )
+    .attr("transform", "translate(0, " +parseInt( height_chart + 40)+ ")");
 var g3 =  svg_linechart.append("svg").append("g")
 .attr("id", function(d, i) { return"g3" })
     .attr("width", width_chart - 2 * margin_chart)
-    .attr("height", parseInt(height_chart- margin_chart))
+    .attr("height", parseInt(height_chart- 40))
     .attr("transform", "translate(" + parseInt(width_chart +margin_chart)+ ", 0)");
 var g4 =  svg_linechart.append("svg").append("g")
 .attr("id", function(d, i) { return"g4" })
     .attr("width", width_chart - 2 * margin_chart)
-    .attr("height", parseInt(height_chart- margin_chart))
-    .attr("transform", "translate(" + parseInt(width_chart+margin_chart) + "," + parseInt(height_chart+margin_chart)+ ")");
+    .attr("height", parseInt(height_chart- 40))
+    .attr("transform", "translate(" + parseInt(width_chart+margin_chart) + "," + parseInt(height_chart+40)+ ")");
 
 var parseTime = d3.timeParse("%Y");
 
@@ -168,35 +168,34 @@ function lineChartcreate(data,g,name, x , y , line){
             else{
                 return '1px';
             }
-        })
-                 
+        });          
+     var legend = g.selectAll('.legend')
+        .data(cities);
     
-        
-        var legend = g
-      .data(cities)
-      .enter()
-      .append('g')
-      .attr('class', 'legend');
-      console.log(legend)
-    legend.append('rect')
-      .attr('x', width_chart - 80)
-      .attr('y', function(d, i) {
-        return i * 20;
-      })
-      .attr('width', 10)
-      .attr('height', 10)
-      .style('fill', function(d) {
-        return z(d.id);//color(d.name);
-      });
+    var legendEnter=legend
+        .enter()
+        .append('g')
+        .attr('class', 'legend')
+        .attr('id',function(d){ return d.name; })
 
-    legend.append('text')
-      .attr('x', width_chart - 8)
-      .attr('y', function(d, i) {
-        return (i * 20) + 9;
+ legendEnter.append('circle')
+        .attr('cx', width_chart+margin_chart)
+        .attr('cy', function(d, i) {
+        return (i * 9)+10 ;
       })
-      .text(function(d) {         
-        return d.id;
-      });
+        .attr('r', 2)
+        .style('fill', function(d) { 
+          	return z(d.id);
+        });
+        	        	
+	//add the legend text
+    legendEnter.append('text')
+        .attr('x', width_chart+margin_chart+5)
+       .attr('y', function(d, i) {
+        return (i * 9)+13 ;
+      })
+       .style("font-size","6px")
+        .text(function(d){ return d.id; });
 
 
 var mouseG = g.append("g")
