@@ -1,28 +1,62 @@
+// d3.select("#new").append("#div")
+//var key = d3.select("#key")
+  //  .selectAll("div")
+    //.data(data)
+    //.enter()
+    //.append("div")
+    //.attr("class","key_row")
+    //.attr("id",function (d){ return d.line_id;})
 
 
 d3.json("data.json").then(data => {
     keys = d3.keys(data)
     for (var j = 0; j < keys.length; j++){
-        printHistogram(data, keys[j])
+        createDiv(j)
+    }
+    for(var j = 0; j < keys.length; j++) {
+        printHistogram(data, keys[j], j)
     }
 });
 
-function printHistogram(data, deviceName){
+function createDiv(id){
+    if((id % 2) == 0) {
+        // Create row
+        const div_row = document.createElement('div');
+        div_row.className = 'rowt';
+        div_row.id = 'row'+id;
+        document.getElementById("tabl1").appendChild(div_row)
+
+        // Create chart div within the row
+        const div = document.createElement('div');
+        div.id = 'chart'+id;
+        div.className = "chart"
+        document.getElementById(div_row.id).appendChild(div);
+    } else {
+        const div = document.createElement('div');
+        div.id = 'chart'+id;
+        div.className = "chart"
+        value = id - 1
+        document.getElementById('row'+value).appendChild(div);
+    }
+
+}
+
+function printHistogram(data, deviceName, id){
 
     var textmargin = 250
     // svg
-    var svg_histogram = d3.select("#div_list")
+    var svg_histogram = d3.select("#chart"+id)
         .append("svg")
         .attr("id","svg_histogram")
         .attr('preserveAspectRatio', 'xMinYMin meet')
         .attr(
             'viewBox',
-            '0 0 500 175'
+            '0 -20 500 200'
         )
         .append("g")
-        .attr("transform", "translate(40,30)");
+        .attr("width", 600)
 
-    title = data[deviceName]["histogram"].title;
+    title = deviceName + ": " + data[deviceName]["histogram"].title;
     title_yAxis = data[deviceName]["histogram"]["y_label"];
     x_values = data[deviceName]["histogram"]["values"];
     x_names = data[deviceName]["histogram"]["x_labels"];
@@ -133,8 +167,8 @@ function printHistogram(data, deviceName){
         .style("font-size", "10px")
         .text(title);
 
-    svg_histogram.append("text")
-        .text(deviceName)
-        .attr("x", textmargin/4)
-        .attr("y", height/2);
+    // svg_histogram.append("text")
+    //     .text(deviceName)
+    //     .attr("x", textmargin/4)
+    //     .attr("y", height/2);
 }

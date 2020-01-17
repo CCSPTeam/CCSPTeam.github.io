@@ -91,3 +91,13 @@ div.tooltip {
 text {
     pointer-events: none;
 }
+
+.tablet {
+    display:table;
+    table-layout:fixed;
+    border-collapse: collapse;
+    width:100%;
+    height:100%;
+}
+.rowt{ display: table-row; }
+.chart{display: table-cell;}
