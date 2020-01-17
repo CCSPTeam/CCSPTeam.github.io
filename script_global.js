@@ -1,7 +1,7 @@
 const path = d3.geoPath();
 const projection = d3.geoMercator()
-    .scale(70)
-    .translate([500/2, 500/2])
+    .scale(50)
+    .translate([160, 200])
 
 path.projection(projection);
 
@@ -13,7 +13,7 @@ const svg_map = d3.select('#div_global').append("svg")
     .attr('preserveAspectRatio', 'xMinYMin meet')
     .attr(
         'viewBox',
-        '0 0 500 350'
+        '0 0 500 250'
     )
 
 var svg_btn = d3.select("#div_global_button").append("svg")
@@ -54,8 +54,8 @@ var selector = svg_btn
     .attr("fill", "#43a10f")
     .attr("opacity", "0");
 
-
-
+var y_histo = d3.scaleLinear().range([0, 140]);
+var yAxis = d3.axisTop(y_histo);
 d3.csv("Data/enerdata.csv").then(function(data){
     d3.json('Data/countries.geo.json').then(function(geojson) {
         // Link Datas to geoJSON
@@ -67,8 +67,25 @@ d3.csv("Data/enerdata.csv").then(function(data){
             }
         }
 
-        var carte = svg_map.append("g").selectAll("path")
+        var carte = svg_map.append("g")
+            .selectAll("path")
             .data(geojson.features);
+
+        var histo = svg_map.append("g")
+            .attr("id", "histo")
+            .attr("width", 170)
+            .attr("height", 200)
+            .attr("transform", "translate(330, 50)");
+
+        var y_axis = histo.selectAll("text")
+            .data(data)
+            .enter().append("text")
+            .text(function(d){return d.country})
+            .attr("x", 10)
+            .attr("y", function(d, i){return i*4.6})
+            .style("font-size", "3px")
+            .style("text-anchor", "end");
+
 
         var title = svg_map.append("text")
             .attr("x", 250)
@@ -80,10 +97,39 @@ d3.csv("Data/enerdata.csv").then(function(data){
             .attr("y", 25)
             .attr("text-anchor", "middle");
         draw(1)
+        histo.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(15,-5)")
+            .call(d3.axisTop(y_histo))
+            .style("font-size","6px")
+            .style("stroke-width", "0.5px");
 
+        [max, min] = get_min_max(1, geojson.features)
+        y_histo.domain([0, max])
+
+        histo.selectAll(".bar")
+            .data(data)
+            .enter().append("rect")
+            .attr("class", "bar")
+            .attr("x", 15)
+            .attr("height", 3)
+            .attr("y", function(d, i){return i*4.6 - 2.5})
+            .attr("width", function(d){return Object.values(d)[1]})
+            .attr("fill", "#2a69b2");
 
         function draw(index) {
             [max, min] = get_min_max(index, geojson.features)
+            y_histo.domain([0, max])
+            yAxis.scale(y_histo)
+
+            histo.select(".x")
+                .transition().duration(1000)
+                .call(yAxis)
+
+            d3.selectAll(".bar")
+                .data(data).transition().duration(1000)
+                .attr("width", function(d, i){return y_histo(Object.values(d)[index])});
+
 
             var colorScale = d3.scaleQuantize()
                 .domain([ min, max ])
@@ -101,14 +147,29 @@ d3.csv("Data/enerdata.csv").then(function(data){
                 })
                 .on('mousemove', function(d) {
                     var mousePosition = d3.mouse(this);
-                    if (d.properties.values){
+                    if (d.properties.values) {
                         tool.classed('hidden', false)
                             .attr('style', 'left:' + (event.pageX + 10) +
                                 'px; top:' + (event.pageY + 10) + 'px')
-                            .html(d.properties.name + ": " + 	round_to_precision(parseFloat(d.properties.values[index]), 2));}
+                            .html(d.properties.name + ": " + round_to_precision(parseFloat(d.properties.values[index]), 2));
+
+                        d3.selectAll(".bar")
+                            .data(data)
+                            .attr("fill", function (d2) {
+                                if (d2.country == d.properties.name) {
+                                    return "#2a69b2";
+                                } else {
+                                    return "rgba(99,99,99,0.46)";
+                                }
+                            });
+                    }
+
                 })
                 .on('mouseout', function() {
                     tool.classed('hidden', true);
+                    d3.selectAll(".bar")
+                        .data(data)
+                        .attr("fill", "#2a69b2");
                 });
 
             title.text(titles[index-1]);
@@ -202,16 +263,17 @@ function get_min_max(index, data){
 function update_legend(colorScale){
     svg_map.append("g")
         .attr("class", "legendQuant")
-        .attr("transform", "translate(400, 15)");
+        .attr("transform", "translate(0, 15)");
 
     var legend = d3.legendColor()
         .labelFormat(d3.format(".0f"))
         .scale(colorScale)
-        .shapePadding(5)
-        .shapeWidth(10)
-        .shapeHeight(5)
-        .labelOffset(12);
+        .shapePadding(0)
+        .shapeWidth(5)
+        .shapeHeight(10)
+        .labelOffset(5);
 
     svg_map.select(".legendQuant")
         .call(legend)
+        .style("font-size", "10px")
 }

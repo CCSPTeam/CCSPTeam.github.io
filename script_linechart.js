@@ -1,6 +1,6 @@
-var width_chart = 250;
+var width_chart = 190;
 var height_chart = 150;
-var margin_chart = 40;
+var margin_chart = 80;
 
 const svg_linechart = d3.select('#div_linechart').append("svg")
     .attr("id", "svg234")
@@ -10,58 +10,96 @@ const svg_linechart = d3.select('#div_linechart').append("svg")
         '0 0 600 380'
     )
 
-var g1 = svg_linechart.append("g")
+var g1 = svg_linechart.append("svg").append("g")
  .attr("id", function(d, i) { return"g1" })
     .attr("width", width_chart - 2 * margin_chart)
-    .attr("height", parseInt(height_chart- margin_chart) );
-var g2 = svg_linechart.append("g")
+    .attr("height", parseInt(height_chart- 40) );
+var g2 =  svg_linechart.append("svg").append("g")
 .attr("id", function(d, i) { return"g2" })
     .attr("width", width_chart - 2 * margin_chart)
-    .attr("height", parseInt(height_chart- margin_chart) )
-    .attr("transform", "translate(0, " +parseInt( height_chart + margin_chart)+ ")");
-var g3 = svg_linechart.append("g")
+    .attr("height", parseInt(height_chart- 40) )
+    .attr("transform", "translate(0, " +parseInt( height_chart + 40)+ ")");
+var g3 =  svg_linechart.append("svg").append("g")
 .attr("id", function(d, i) { return"g3" })
     .attr("width", width_chart - 2 * margin_chart)
-    .attr("height", parseInt(height_chart- margin_chart))
+    .attr("height", parseInt(height_chart- 40))
     .attr("transform", "translate(" + parseInt(width_chart +margin_chart)+ ", 0)");
-var g4 = svg_linechart.append("g")
+var g4 =  svg_linechart.append("svg").append("g")
 .attr("id", function(d, i) { return"g4" })
     .attr("width", width_chart - 2 * margin_chart)
-    .attr("height", parseInt(height_chart- margin_chart))
-    .attr("transform", "translate(" + parseInt(width_chart+margin_chart) + "," + parseInt(height_chart+margin_chart)+ ")");
+    .attr("height", parseInt(height_chart- 40))
+    .attr("transform", "translate(" + parseInt(width_chart+margin_chart) + "," + parseInt(height_chart+40)+ ")");
 
 var parseTime = d3.timeParse("%Y");
 
-var x = d3.scaleTime().range([margin_chart, width_chart+margin_chart]),
-    y = d3.scaleLinear().range([height_chart, 0])
+var x1 = d3.scaleTime().range([margin_chart, width_chart+margin_chart]),
+    y1 = d3.scaleLinear().range([height_chart, 0])
     z = d3.scaleOrdinal(d3.schemeCategory10);
 
 // D3 Line generator with curveBasis being the interpolator
-var line = d3.line()
+var line1 = d3.line()
     .curve(d3.curveBasis)
     .x(function (d) {
-        return x(parseTime(d.date));
+        return x1(parseTime(d.date));
     })
     .y(function (d) {
-        return y(d.value);
+        return y1(d.value);
     });
+var x2 = d3.scaleTime().range([margin_chart, width_chart+margin_chart]),
+    y2 = d3.scaleLinear().range([height_chart, 0])
+    z = d3.scaleOrdinal(d3.schemeCategory10);
 
+// D3 Line generator with curveBasis being the interpolator
+var line2 = d3.line()
+    .curve(d3.curveBasis)
+    .x(function (d) {
+        return x2(parseTime(d.date));
+    })
+    .y(function (d) {
+        return y2(d.value);
+    });
+    var x3 = d3.scaleTime().range([margin_chart, width_chart+margin_chart]),
+    y3 = d3.scaleLinear().range([height_chart, 0])
+    z = d3.scaleOrdinal(d3.schemeCategory10);
+
+// D3 Line generator with curveBasis being the interpolator
+var line3 = d3.line()
+    .curve(d3.curveBasis)
+    .x(function (d) {
+        return x3(parseTime(d.date));
+    })
+    .y(function (d) {
+        return y3(d.value);
+    });
+     var x4 = d3.scaleTime().range([margin_chart, width_chart+margin_chart]),
+    y4 = d3.scaleLinear().range([height_chart, 0])
+    z = d3.scaleOrdinal(d3.schemeCategory10);
+
+// D3 Line generator with curveBasis being the interpolator
+var line4 = d3.line()
+    .curve(d3.curveBasis)
+    .x(function (d) {
+        return x4(parseTime(d.date));
+    })
+    .y(function (d) {
+        return y4(d.value);
+    });
 d3.csv("Data/CO2_emission.csv").then(function (data) {
-    lineChartcreate(data,g2,"CO2 Emission")
+    lineChartcreate(data,g2,"CO2 Emission",x1,y1,line1)
 });
 
 
 d3.csv("Data/Electricity_production.csv").then(function (data) {
-        lineChartcreate(data,g1,"Electricity Production")
+        lineChartcreate(data,g1,"Electricity Production",x2,y2,line2)
     });
 d3.csv("Data/electricity_domestic_consumption.csv").then(function (data) {
-        lineChartcreate(data,g3, "Electricity Consumption")
+        lineChartcreate(data,g3, "Electricity Consumption",x3,y3,line3)
     });
 d3.csv("Data/share_renewable.csv").then(function (data) {
-        lineChartcreate(data,g4, "Share of Renewable")
+        lineChartcreate(data,g4, "Share of Renewable",x4,y4,line4)
     });
     
-function lineChartcreate(data,g,name){
+function lineChartcreate(data,g,name, x , y , line){
  var cities = data.columns.slice(1).map(function (id) {
         return {
             id: id,
@@ -130,64 +168,64 @@ function lineChartcreate(data,g,name){
             else{
                 return '1px';
             }
-        })
-                 
+        });          
+     var legend = g.selectAll('.legend')
+        .data(cities);
     
-        
-        var legend = g
-      .data(cities)
-      .enter()
-      .append('g')
-      .attr('class', 'legend');
-      console.log(legend)
-    legend.append('rect')
-      .attr('x', width_chart - 80)
-      .attr('y', function(d, i) {
-        return i * 20;
-      })
-      .attr('width', 10)
-      .attr('height', 10)
-      .style('fill', function(d) {
-        return "black";//color(d.name);
-      });
+    var legendEnter=legend
+        .enter()
+        .append('g')
+        .attr('class', 'legend')
+        .attr('id',function(d){ return d.name; })
 
-    legend.append('text')
-      .attr('x', width_chart - 8)
-      .attr('y', function(d, i) {
-        return (i * 20) + 9;
+ legendEnter.append('circle')
+        .attr('cx', width_chart+margin_chart)
+        .attr('cy', function(d, i) {
+        return (i * 9)+10 ;
       })
-      .text(function(d) {         
-        return d.id;
-      });
+        .attr('r', 2)
+        .style('fill', function(d) { 
+          	return z(d.id);
+        });
+        	        	
+	//add the legend text
+    legendEnter.append('text')
+        .attr('x', width_chart+margin_chart+5)
+       .attr('y', function(d, i) {
+        return (i * 9)+13 ;
+      })
+       .style("font-size","6px")
+        .text(function(d){ return d.id; });
 
 
 var mouseG = g.append("g")
-      .attr("class", "mouse-over-effects").attr("transform", "translate(" + margin_chart + ","+0+")");
+      .attr("class", "mouse-over-effects"+g.attr("id")).attr("transform", "translate(" + margin_chart + ","+0+")");
     mouseG.append("path") // this is the black vertical line to follow mouse
-      .attr("class", "mouse-line")
+      .attr("class", "mouse-line"+g.attr("id"))
       .style("stroke", "black")
       .style("stroke-width", "0.5px")
       .style("opacity", "0");
       
-    var lines = document.getElementsByClassName("line");//.getElementById(g.attr("id"))
+    var lines = document.getElementById(g.attr("id")).getElementsByClassName("line");//.getElementById(g.attr("id"))
 
-    var mousePerLine = mouseG.selectAll('.mouse-per-line')
+    var mousePerLine = mouseG.selectAll('.mouse-per-line'+g.attr("id"))
       .data(cities)
       .enter()
       .append("g")
-      .attr("class", "mouse-per-line");
+      .attr("class", "mouse-per-line"+g.attr("id"));
 
     mousePerLine.append("circle")
       .attr("r", 3)
       .style("stroke", function(d) {
-        return "black";
+        return z(d.id);
       })
       .style("fill", "none")
       .style("stroke-width", "1px")
       .style("opacity", "0");
 
-    mousePerLine.append("text")
+        mousePerLine.append("text")
             .style("font-size", "8px")
+
       .attr("transform", "translate(10,3)");
       
     mouseG.append('svg:rect') // append a rect to catch mouse movements on canvas
@@ -196,31 +234,32 @@ var mouseG = g.append("g")
       .attr('fill', 'none')   
       .attr('pointer-events', 'all')
       .on('mouseout', function() { // on mouse out hide line, circles and text
-        d3.selectAll(".mouse-line")
+        d3.selectAll(".mouse-line"+g.attr("id"))
           .style("opacity", "0");
-        d3.selectAll(".mouse-per-line circle")
+        d3.selectAll(".mouse-per-line"+g.attr("id")+" circle")
           .style("opacity", "0");
-        d3.selectAll(".mouse-per-line text")
+        d3.selectAll(".mouse-per-line"+g.attr("id")+" text")
           .style("opacity", "0");
       })
       .on('mouseover', function() { // on mouse in show line, circles and text
-        d3.selectAll(".mouse-line")
+        d3.selectAll(".mouse-line"+g.attr("id"))
           .style("opacity", "1");
-        d3.selectAll(".mouse-per-line circle")
+        d3.selectAll(".mouse-per-line"+g.attr("id")+" circle")
           .style("opacity", "1");
-        d3.selectAll(".mouse-per-line text")
+        d3.selectAll(".mouse-per-line"+g.attr("id")+" text")
           .style("opacity", "1");
       })
       .on('mousemove', function() { // mouse moving over canvas
         var mouse = d3.mouse(this);
-        d3.selectAll(".mouse-line")
+        d3.selectAll(".mouse-line"+g.attr("id"))
           .attr("d", function() {
             var d = "M" + mouse[0] + "," + height_chart;
             d += " " + mouse[0] + "," + 0;
+            
             return d;
           });
-
-        d3.selectAll(".mouse-per-line")
+            console.log(g.attr("id"))
+        d3.selectAll(".mouse-per-line"+g.attr("id"))
         
           .attr("transform", function(d, i) {
             
@@ -246,7 +285,7 @@ var mouseG = g.append("g")
             }
             
             d3.select(this).select('text')
-              .text(y.invert(pos.y).toFixed(2));
+              .text(y.invert(pos.y).toFixed(0));
               
             return "translate(" + mouse[0] + "," + pos.y +")";
           });
